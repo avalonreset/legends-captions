@@ -1,8 +1,5 @@
-<p align="center">
-  <img src="assets/banner.webp" alt="Legends Captions banner: agentic video captions with overbuilt accuracy" width="100%">
-</p>
-
-# Legends Captions - Agentic Video Caption System
+<!-- ?raw=true busts GitHub's image CDN cache after the 0.2.0 rebrand -->
+# ![legends-captions](assets/banner.webp?raw=true)
 
 [![release](https://img.shields.io/github/v/release/avalonreset/legends-captions?label=release&style=flat-square&labelColor=000000&color=ff0000)](https://github.com/avalonreset/legends-captions/releases/latest)
 [![checks](https://img.shields.io/github/actions/workflow/status/avalonreset/legends-captions/tests.yml?branch=main&label=checks&style=flat-square&labelColor=000000)](https://github.com/avalonreset/legends-captions/actions/workflows/tests.yml)

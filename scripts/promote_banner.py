@@ -1,8 +1,11 @@
-"""Regenerate the promoted Legends Captions banner assets.
+"""Regenerate the Legends Captions banner assets in house style.
 
-Composites the v2 text treatment (kicker pill, two-line title, slogan)
-onto the preserved AI-generated source art, then promotes the winner to
-``assets/``. Replaces the ad-hoc v2 step with a reproducible script.
+House spec (measured from cto-legends / legends-obs-kit banners):
+black background, DejaVu Sans Mono, lowercase red slug title, thin gray
+rule, lowercase white tagline, thin red bar on the left edge.
+
+Outputs: assets/banner.webp, assets/banner.png (4096x1024),
+assets/social-preview.png (1280x640).
 
 Usage: ``python scripts/promote_banner.py``
 """
@@ -11,111 +14,66 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from PIL import Image, ImageDraw, ImageFont, ImageFilter
+from PIL import Image, ImageDraw, ImageFont
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SRC = ROOT / "release" / "art" / "banner-v2-concepts" / "source-v2-01.png"
-V2 = ROOT / "release" / "art" / "banner-v2-concepts"
 ASSETS = ROOT / "assets"
 
-LINE1 = "LEGENDS"
-LINE2 = "CAPTIONS"
-SLOGAN = "Caption accuracy, taken way too far."
-PILL = "AGENTIC VIDEO CAPTIONS"
+TITLE = "legends-captions"
+TAGLINE = (
+    "agentic caption qa: contextual correction,",
+    "forced alignment, active-word renders, proof",
+)
 
-CYAN = (14, 200, 230, 255)
-WHITE = (246, 246, 242, 255)
-SOFT = (205, 218, 220, 255)
-INK = (4, 9, 12, 255)
+RED = (255, 0, 0)
+GRAY = (102, 102, 102)
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+
+FONT_CANDIDATES = [
+    Path("/usr/share/fonts/truetype/dejavu/DejaVuSansMono.ttf"),
+    Path("/mnt/c/Windows/Fonts/consola.ttf"),
+    Path("C:/Windows/Fonts/consola.ttf"),
+]
 
 
-def font(name: str, size: int) -> ImageFont.FreeTypeFont:
-    roots = [
-        Path("C:/Windows/Fonts"),
-        Path("/mnt/c/Windows/Fonts"),
-        Path("/usr/share/fonts"),
-    ]
-    for root in roots:
-        candidate = root / name
+def mono(size: int) -> ImageFont.FreeTypeFont:
+    for candidate in FONT_CANDIDATES:
         if candidate.exists():
             return ImageFont.truetype(str(candidate), size)
-    fallback = root / "arialbd.ttf" if (root / "arialbd.ttf").exists() else None
-    if fallback is not None:
-        return ImageFont.truetype(str(fallback), size)
-    return ImageFont.load_default()
+    raise SystemExit("No monospace font found; aborting.")
 
 
-LINE1_FONT = font("segoeui.ttf", 112)
-LINE2_FONT = font("seguibl.ttf", 150)
-SLOGAN_FONT = font("segoeui.ttf", 46)
-PILL_FONT = font("segoeuib.ttf", 30)
+def render(width: int, height: int) -> Image.Image:
+    scale = width / 4096
+    img = Image.new("RGB", (width, height), BLACK)
+    draw = ImageDraw.Draw(img)
 
+    bar_w = max(2, round(8 * scale))
+    draw.rectangle((0, 0, bar_w - 1, height - 1), fill=RED)
 
-def cover_crop(img: Image.Image, width: int, height: int) -> Image.Image:
-    img = img.convert("RGB")
-    scale = max(width / img.width, height / img.height)
-    resized = img.resize(
-        (round(img.width * scale), round(img.height * scale)),
-        Image.Resampling.LANCZOS,
-    )
-    left = max(0, (resized.width - width) // 2)
-    top = max(0, (resized.height - height) // 2)
-    return resized.crop((left, top, left + width, top + height))
+    title_font = mono(round(175 * scale))
+    tag_font = mono(round(106 * scale))
+    margin = round(204 * scale)
+    tag_x = round(303 * scale)
 
-
-def draw_text(
-    draw: ImageDraw.ImageDraw,
-    xy: tuple[int, int],
-    text: str,
-    fnt: ImageFont.FreeTypeFont,
-    fill: tuple[int, int, int, int],
-) -> None:
-    x, y = xy
-    shadow = (0, 0, 0, 190)
-    for ox, oy in [(3, 3), (0, 3), (3, 0)]:
-        draw.text((x + ox, y + oy), text, font=fnt, fill=shadow)
-    draw.text((x, y), text, font=fnt, fill=fill)
-
-
-def compose(width: int, height: int, y_off: int = 0) -> Image.Image:
-    base = cover_crop(Image.open(SRC), width, height).convert("RGBA")
-
-    shade = Image.new("RGBA", (width, height), (0, 0, 0, 0))
-    shade_draw = ImageDraw.Draw(shade)
-    shade_draw.rectangle((0, 0, 1050, height), fill=(0, 0, 0, 150))
-    shade = shade.filter(ImageFilter.GaussianBlur(24))
-    base = Image.alpha_composite(base, shade)
-
-    draw = ImageDraw.Draw(base)
-    x = 96
-    pill_y = 112 + y_off
-    pill_w = round(draw.textlength(PILL, font=PILL_FONT)) + 48
-    draw.rounded_rectangle((x - 48, pill_y, x - 48 + pill_w, pill_y + 52), radius=12, fill=CYAN)
-    draw.text((x - 24, pill_y + 8), PILL, font=PILL_FONT, fill=INK)
-
-    rule_top = pill_y
-    rule_bottom = 660 + y_off
-    draw.rectangle((x - 61, rule_top, x - 55, rule_bottom), fill=CYAN)
-
-    draw_text(draw, (x + 22, 195 + y_off), LINE1, LINE1_FONT, WHITE)
-    draw_text(draw, (x + 22, 325 + y_off), LINE2, LINE2_FONT, WHITE)
-    draw_text(draw, (x + 22, 525 + y_off), SLOGAN, SLOGAN_FONT, SOFT)
-    draw.line((x + 22, 600 + y_off, x + 592, 600 + y_off), fill=CYAN, width=5)
-    return base.convert("RGB")
+    draw.text((margin, round(213 * scale)), TITLE, font=title_font, fill=RED, anchor="lt")
+    rule_y = round(456 * scale)
+    draw.line((margin, rule_y, width - margin, rule_y), fill=GRAY, width=max(1, round(3 * scale)))
+    draw.text((tag_x, round(534 * scale)), TAGLINE[0], font=tag_font, fill=WHITE, anchor="lt")
+    draw.text((tag_x, round(668 * scale)), TAGLINE[1], font=tag_font, fill=WHITE, anchor="lt")
+    return img
 
 
 def main() -> None:
-    wide = compose(1920, 820)
-    tall = compose(1920, 1080, y_off=110)
-    wide.save(V2 / "banner-v2-01-wide.webp", "WEBP", quality=88, method=6)
-    tall.save(V2 / "banner-v2-01-16x9.webp", "WEBP", quality=88, method=6)
-    wide.save(ASSETS / "banner.webp", "WEBP", quality=88, method=6)
-    tall.save(ASSETS / "banner-16x9.webp", "WEBP", quality=88, method=6)
-
-    social = tall.resize((1280, 720), Image.Resampling.LANCZOS)
-    social.crop((0, 40, 1280, 680)).save(ASSETS / "social-preview.jpg", "JPEG", quality=90)
-    print("promoted banner.webp, banner-16x9.webp, social-preview.jpg")
+    ASSETS.mkdir(parents=True, exist_ok=True)
+    banner = render(4096, 1024)
+    banner.save(ASSETS / "banner.webp", "WEBP", quality=90, method=6)
+    banner.save(ASSETS / "banner.png", "PNG")
+    social = render(1280, 640)
+    social.save(ASSETS / "social-preview.png", "PNG")
+    print("wrote banner.webp, banner.png, social-preview.png")
 
 
 if __name__ == "__main__":
