@@ -10,7 +10,7 @@ tags:
 
 # Overview
 
-Legends Ultimate Captions is a caption deployment system, not a subtitle script. It is a core component of the Avalon Reset / Hub Pro video production pipeline, built for videos where caption text, timing, visual style, and revision behavior are part of the content product.
+Legends Captions is a caption deployment system, not a subtitle script. It is a core component of the Avalon Reset / Hub Pro video production pipeline, built for videos where caption text, timing, visual style, and revision behavior are part of the content product.
 
 The system combines:
 

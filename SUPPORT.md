@@ -4,7 +4,7 @@
 
 - Read the [README](README.md) quickstart and run `legends-captions doctor`
   to check your project setup.
-- Search existing [issues](https://github.com/avalonreset/legends-ultimate-captions/issues)
+- Search existing [issues](https://github.com/avalonreset/legends-captions/issues)
   before opening a new one.
 - For community discussion, join the
   [AI Marketing Hub Pro](https://www.skool.com/ai-marketing-hub-pro) community.

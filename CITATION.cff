@@ -1,12 +1,12 @@
 cff-version: 1.2.0
-title: legends-ultimate-captions
+title: legends-captions
 message: >-
   If you use this software, please cite it using the metadata from this file.
 type: software
 authors:
   - alias: avalonreset
-repository-code: 'https://github.com/avalonreset/legends-ultimate-captions'
-url: 'https://github.com/avalonreset/legends-ultimate-captions'
+repository-code: 'https://github.com/avalonreset/legends-captions'
+url: 'https://github.com/avalonreset/legends-captions'
 license: MIT
 version: 0.1.0
 date-released: '2026-09-24'

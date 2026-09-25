@@ -1,4 +1,4 @@
-"""Command line entrypoint for Legends Ultimate Captions."""
+"""Command line entrypoint for Legends Captions."""
 
 from __future__ import annotations
 
@@ -39,7 +39,7 @@ def command_doctor(args: argparse.Namespace) -> int:
     config = load_config(Path(args.config) if args.config else None)
     raw_sources = sorted((PROJECT_ROOT / ".raw" / "sources").glob("*"))
     report = {
-        "project": "Legends Ultimate Captions",
+        "project": "Legends Captions",
         "version": __version__,
         "root": str(PROJECT_ROOT),
         "config_profile": config.get("profile"),

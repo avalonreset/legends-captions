@@ -1,9 +1,9 @@
 ---
-name: legends-ultimate-captions
+name: legends-captions
 description: Agent-driven video caption QA and rendering workflow with contextual ASR correction, forced alignment policy, active-word captions, proof-frame QA, and revision learning.
 ---
 
-# Legends Ultimate Captions
+# Legends Captions
 
 Use this skill when the user wants captions added to a video, caption text fixed,
 caption timing checked, active-word captions rendered, or a caption run packaged
@@ -41,7 +41,7 @@ powershell -ExecutionPolicy Bypass -File .\scripts\run-tests.ps1
 If `legends-captions` is not on PATH, use:
 
 ```powershell
-python -m legends_ultimate_captions.cli doctor
+python -m legends_captions.cli doctor
 ```
 
 ## Transcript Sources
@@ -53,6 +53,6 @@ video. This skill starts where raw text exists.
 
 ## Current Boundary
 
-The v0.1.0 package includes policy, tests, docs, and helper code. Full one-command
+The v0.2.0 package includes policy, tests, docs, and helper code. Full one-command
 media intake, Parakeet orchestration, NFA orchestration, render packaging, and
 proof-frame automation are next-phase work.

@@ -1,4 +1,4 @@
-# Legends Ultimate Captions Agent Instructions
+# Legends Captions Agent Instructions
 
 This project is the standalone caption system for Avalon Reset and Hub Pro video production. Work from the project brain first, then the code.
 
@@ -30,12 +30,12 @@ This project is the standalone caption system for Avalon Reset and Hub Pro video
 ## QA Before Done
 
 - Run the policy tests.
-- Run `python -m legends_ultimate_captions.cli doctor`.
+- Run `python -m legends_captions.cli doctor`.
 - For real renders, verify ffprobe output and proof frames from the final file, not just ASS previews.
 
 ## Release Packaging
 
-- Keep `README.md`, `CHANGELOG.md`, `docs/release-checklist.md`, `skills/legends-ultimate-captions/SKILL.md`, `CLAUDE.md`, `GEMINI.md`, and `AGENTS.md` aligned.
+- Keep `README.md`, `CHANGELOG.md`, `docs/release-checklist.md`, `skills/legends-captions/SKILL.md`, `CLAUDE.md`, `GEMINI.md`, and `AGENTS.md` aligned.
 - Skool release drafts live under `release/skool/`; Hub Pro mirror drafts may live under `E:\ai-marketing-hub-pro\wiki\drafts\skool`.
 - Release art lives under `release/art/`; `assets/banner.webp` is the current README banner.
 - Do not publish to Skool until repo and release URLs are real and the user approves the copy/art.

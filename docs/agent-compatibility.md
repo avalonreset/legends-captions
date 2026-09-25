@@ -19,7 +19,7 @@ Claude Code supports skills as directories with a `SKILL.md` entrypoint. This
 repo includes:
 
 ```text
-.claude/skills/legends-ultimate-captions/SKILL.md
+.claude/skills/legends-captions/SKILL.md
 ```
 
 ## Gemini CLI
@@ -37,7 +37,7 @@ GEMINI.md
 The portable Agent Skills entrypoint is:
 
 ```text
-skills/legends-ultimate-captions/SKILL.md
+skills/legends-captions/SKILL.md
 ```
 
 All surfaces route to the same policy pages, config files, tests, and CLI.

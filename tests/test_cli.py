@@ -4,7 +4,7 @@ import io
 import json
 import unittest
 
-from legends_ultimate_captions.cli import load_config, main
+from legends_captions.cli import load_config, main
 
 
 class CliSmokeTests(unittest.TestCase):
@@ -18,7 +18,7 @@ class CliSmokeTests(unittest.TestCase):
         code, out = self.run_main(["doctor"])
         self.assertEqual(code, 0)
         report = json.loads(out)
-        self.assertEqual(report["project"], "Legends Ultimate Captions")
+        self.assertEqual(report["project"], "Legends Captions")
         self.assertIn("config_profile", report)
 
     def test_policy_report_lists_rules(self) -> None:

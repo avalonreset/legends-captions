@@ -6,8 +6,8 @@ Requires Python 3.10+ and Git. No third-party packages are needed for the
 core library and tests.
 
 ```sh
-git clone https://github.com/avalonreset/legends-ultimate-captions.git
-cd legends-ultimate-captions
+git clone https://github.com/avalonreset/legends-captions.git
+cd legends-captions
 python -m venv .venv
 .venv/bin/python -m pip install -e .
 ```

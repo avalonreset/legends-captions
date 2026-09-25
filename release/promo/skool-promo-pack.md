@@ -4,7 +4,7 @@
 
 New private release for AI Marketing Hub Pro:
 
-**Legends Ultimate Captions**
+**Legends Captions**
 
 This is the caption system for videos where generic auto captions are not good enough.
 
@@ -56,5 +56,5 @@ Caption deployment has entered the unnecessarily serious phase.
 
 ## GitHub Release Blurb
 
-Legends Ultimate Captions v0.1.0 is the first public release of the standalone caption system. It includes the contextual correction engine, CLI, manifests, tests, agent surfaces, Obsidian brain, launch docs, and release art staging. Full media intake, Parakeet orchestration, NFA orchestration, render packaging, and proof-frame automation are next.
+Legends Captions v0.1.0 is the first public release of the standalone caption system. It includes the contextual correction engine, CLI, manifests, tests, agent surfaces, Obsidian brain, launch docs, and release art staging. Full media intake, Parakeet orchestration, NFA orchestration, render packaging, and proof-frame automation are next.
 

@@ -1,4 +1,4 @@
-# Legends Ultimate Captions Architecture
+# Legends Captions Architecture
 
 ## Layers
 

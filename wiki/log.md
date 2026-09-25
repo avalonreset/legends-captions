@@ -15,7 +15,7 @@ tags:
 - Updated [[Revision Learning Policy]] and [[Autonomous Shorts Caption Policy]] with the version-count reduction mandate: each accepted correction should make the next first-pass Short better.
 - Added recurring-failure regression language so repeated misses after policy capture are treated as package-runner or QA-gate failures.
 - Added [[projects/Brain Infrastructure Integration 2026-06-21|Brain Infrastructure Integration 2026-06-21]].
-- Captured that Legends Ultimate Captions is a core Avalon Reset / Hub Pro video production dependency and must be fully cloned or ingested into the brain infrastructure, not represented only by a summary note.
+- Captured that Legends Captions is a core Avalon Reset / Hub Pro video production dependency and must be fully cloned or ingested into the brain infrastructure, not represented only by a summary note.
 - Updated [[overview]] and [[projects/Build Roadmap|Build Roadmap]] with the brain-integration requirement.
 - Added [[Autonomous Shorts Caption Policy]] after the remote-control Short revision cycle.
 - Captured bottom speech-caption scene reset policy: hard cuts are caption group boundaries, with zero cut-crossing events and zero invalid ASS events as the default QA target.
@@ -24,7 +24,7 @@ tags:
 
 ## 2026-06-17
 
-- Created standalone project `E:\legends-ultimate-captions`.
+- Created standalone project `E:\legends-captions`.
 - Imported source lineage from Avalon Reset YouTube and AI Marketing Hub Pro into `.raw/`.
 - Seeded policy engine and regression tests from recent SoulX FlashFace caption corrections.
 - Added Codex, Claude, and Gemini operating instructions.

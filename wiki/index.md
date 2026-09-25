@@ -9,7 +9,7 @@ tags:
   - index
 ---
 
-# Legends Ultimate Captions Index
+# Legends Captions Index
 
 ## Orientation
 

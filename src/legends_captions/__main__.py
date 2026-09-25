@@ -1,4 +1,4 @@
-"""Allow `python -m legends_ultimate_captions`."""
+"""Allow `python -m legends_captions`."""
 
 from .cli import main
 

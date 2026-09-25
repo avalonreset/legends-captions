@@ -5,7 +5,7 @@
 - Run unit tests.
 - Run `legends-captions doctor`.
 - Verify `README.md`, `LICENSE`, `CHANGELOG.md`, `AGENTS.md`, `CLAUDE.md`,
-  `GEMINI.md`, and `skills/legends-ultimate-captions/SKILL.md` tell the same story.
+  `GEMINI.md`, and `skills/legends-captions/SKILL.md` tell the same story.
 - Confirm the release is framed as an agentic video caption system, not just a
   text normalization script.
 - Confirm `.gitignore` excludes generated render folders, proof-frame folders,

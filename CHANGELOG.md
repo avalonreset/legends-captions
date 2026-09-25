@@ -1,5 +1,13 @@
 # Changelog
 
+## v0.2.0 - Renamed to Legends Captions
+
+- Renamed the project from Legends Ultimate Captions to Legends Captions.
+- Renamed the Python package `legends_ultimate_captions` to `legends_captions` and the skill slug to `legends-captions`.
+- Regenerated the promoted banner and social preview with the new title.
+- Added an acknowledgments section covering provenance and third-party tools.
+- The CLI command is unchanged: `legends-captions`.
+
 ## v0.1.0 - Initial Public Release
 
 - Created the standalone Legends Ultimate Captions project.

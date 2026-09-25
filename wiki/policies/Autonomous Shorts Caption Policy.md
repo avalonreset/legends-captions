@@ -13,11 +13,11 @@ tags:
 
 # Autonomous Shorts Caption Policy
 
-Use this policy when Ultimate Captions is preparing captions or on-screen text for an autonomous YouTube Short.
+Use this policy when Legends Captions is preparing captions or on-screen text for an autonomous YouTube Short.
 
 ## Bottom Speech Caption Lane
 
-- Bottom captions are speech captions. They should follow the approved Ultimate Captions look: all caps, bold high-contrast type, white inactive words, cyan/blue active word, maximum two lines, and lower-quarter placement.
+- Bottom captions are speech captions. They should follow the approved Legends Captions look: all caps, bold high-contrast type, white inactive words, cyan/blue active word, maximum two lines, and lower-quarter placement.
 - Rebuild bottom captions from the exact final render clock after every cut, retime, or gap compression.
 - Known edit boundaries are caption group boundaries. Do not let a bottom speech-caption group continue across a hard cut just to carry one or two leftover words from the previous scene.
 - If a hard cut happens, finish the outgoing caption at the cut and start a fresh group for the next scene unless there is a documented creative exception.

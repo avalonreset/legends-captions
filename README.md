@@ -1,17 +1,16 @@
 <p align="center">
-  <img src="assets/banner.webp" alt="Legends Ultimate Captions banner: agentic video captions with overbuilt accuracy" width="100%">
+  <img src="assets/banner.webp" alt="Legends Captions banner: agentic video captions with overbuilt accuracy" width="100%">
 </p>
 
-# Legends Ultimate Captions - Agentic Video Caption System
+# Legends Captions - Agentic Video Caption System
 
-[![release](https://img.shields.io/github/v/release/avalonreset/legends-ultimate-captions?label=release&style=flat-square&labelColor=000000&color=ff0000)](https://github.com/avalonreset/legends-ultimate-captions/releases/latest)
-[![checks](https://img.shields.io/github/actions/workflow/status/avalonreset/legends-ultimate-captions/tests.yml?branch=main&label=checks&style=flat-square&labelColor=000000)](https://github.com/avalonreset/legends-ultimate-captions/actions/workflows/tests.yml)
-[![license](https://img.shields.io/github/license/avalonreset/legends-ultimate-captions?label=license&style=flat-square&labelColor=000000&color=666666)](LICENSE)
+[![release](https://img.shields.io/github/v/release/avalonreset/legends-captions?label=release&style=flat-square&labelColor=000000&color=ff0000)](https://github.com/avalonreset/legends-captions/releases/latest)
+[![checks](https://img.shields.io/github/actions/workflow/status/avalonreset/legends-captions/tests.yml?branch=main&label=checks&style=flat-square&labelColor=000000)](https://github.com/avalonreset/legends-captions/actions/workflows/tests.yml)
+[![license](https://img.shields.io/github/license/avalonreset/legends-captions?label=license&style=flat-square&labelColor=000000&color=666666)](LICENSE)
 ![Python](https://img.shields.io/badge/python-3.10+-3776AB)
 ![Agents](https://img.shields.io/badge/agents-Codex%20%7C%20Claude%20%7C%20Gemini-111827)
 
-Video captions are easy to generate and painful to trust. Legends Ultimate
-Captions is an agentic video caption system that treats transcript correction,
+Video captions are easy to generate and painful to trust. Legends Captions is an agentic video caption system that treats transcript correction,
 forced alignment, active-word timing, proof frames, and revision memory as one
 release workflow instead of a pile of manual cleanup.
 
@@ -37,7 +36,7 @@ the second pass teaches the next run.
 
 ## What Makes This Different
 
-| Generic auto captions | Legends Ultimate Captions |
+| Generic auto captions | Legends Captions |
 |---|---|
 | Trusts ASR text too much | Treats ASR as evidence, not the editor |
 | Often misses domain terms | Uses glossary and contextual correction |
@@ -52,8 +51,8 @@ obvious nonsense, and leave behind enough evidence for an agent to improve.
 ## Quick Start
 
 ```powershell
-git clone https://github.com/avalonreset/legends-ultimate-captions.git
-Set-Location -LiteralPath .\legends-ultimate-captions
+git clone https://github.com/avalonreset/legends-captions.git
+Set-Location -LiteralPath .\legends-captions
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install -e .
 .\.venv\Scripts\legends-captions.exe doctor
@@ -95,9 +94,9 @@ python -m unittest discover -s tests
 This repo includes a thin adapter for each agent surface:
 
 - `AGENTS.md` for Codex project instructions.
-- `CLAUDE.md` and `.claude/skills/legends-ultimate-captions/SKILL.md` for Claude Code.
+- `CLAUDE.md` and `.claude/skills/legends-captions/SKILL.md` for Claude Code.
 - `GEMINI.md` and `gemini-extension.json` for Gemini CLI.
-- `skills/legends-ultimate-captions/SKILL.md` as the portable Agent Skills entrypoint.
+- `skills/legends-captions/SKILL.md` as the portable Agent Skills entrypoint.
 
 All adapters point to the same policies and the same CLI. There should not be a
 Codex version of the caption workflow, a Claude version, and a Gemini version.
@@ -139,11 +138,26 @@ active-word rendering, and proof evidence.
 - [Caption QA policy](wiki/policies/Caption%20Intelligence%20Policy.md)
 - [Revision learning policy](wiki/policies/Revision%20Learning%20Policy.md)
 
+## Acknowledgments
+
+The caption policy engine, CLI, manifests, docs, and release art
+direction are original work by Avalon Reset, released under MIT. The
+package has zero runtime dependencies.
+
+Release art sources are AI-generated images composited locally with
+`scripts/stage_banner_concepts.py`; no stock photography or third-party
+artwork is shipped.
+
+This module works alongside tools it does not ship: FFmpeg (LGPL/GPL),
+faster-whisper (MIT), NVIDIA NeMo with Parakeet weights (Apache-2.0
+code, CC-BY-4.0 weights), yt-dlp (Unlicense), and Montserrat (SIL Open
+Font License, referenced by name in the default ASS style only).
+
 ## Status
 
-Current release: `v0.1.0`.
+Current release: `v0.2.0`.
 
 License: MIT. See
 [LICENSE](LICENSE).
 
-Repository target: `avalonreset/legends-ultimate-captions`.
+Repository target: `avalonreset/legends-captions`.

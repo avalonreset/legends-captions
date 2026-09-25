@@ -1,8 +1,8 @@
-# Legends Ultimate Captions Classroom Card Draft
+# Legends Captions Classroom Card Draft
 
 ## Title
 
-Legends Ultimate Captions
+Legends Captions
 
 ## Body
 
@@ -24,10 +24,10 @@ What it handles:
 Start here:
 
 Private repo:
-https://github.com/avalonreset/legends-ultimate-captions
+https://github.com/avalonreset/legends-captions
 
 Latest release:
-https://github.com/avalonreset/legends-ultimate-captions/releases/tag/v0.1.0
+https://github.com/avalonreset/legends-captions/releases/tag/v0.1.0
 
 Launch post:
 coming soon

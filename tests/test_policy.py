@@ -1,6 +1,6 @@
 import unittest
 
-from legends_ultimate_captions.policy import apply_caption_policy, normalize_text
+from legends_captions.policy import apply_caption_policy, normalize_text
 
 
 class CaptionPolicyTests(unittest.TestCase):

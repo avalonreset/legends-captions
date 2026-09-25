@@ -10,7 +10,7 @@ from .policy import PolicyResult, decisions_as_dicts
 
 def build_policy_manifest(result: PolicyResult, source: str | None = None) -> dict[str, Any]:
     return {
-        "schema": "legends_ultimate_captions.policy_manifest.v1",
+        "schema": "legends_captions.policy_manifest.v1",
         "created_utc": datetime.now(timezone.utc).isoformat(),
         "source": source,
         "normalized_text": result.text,

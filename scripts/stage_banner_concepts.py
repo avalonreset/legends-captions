@@ -9,7 +9,7 @@ from PIL import Image, ImageDraw, ImageFont, ImageFilter
 ROOT = Path(__file__).resolve().parents[1]
 GENERATED = Path.home() / ".codex" / "generated_images" / "019ed625-2185-74e3-a5e1-0a92eff0d01c"
 OUT = ROOT / "release" / "art" / "banner-concepts"
-TITLE = "Legends Ultimate Captions"
+TITLE = "Legends Captions"
 SLOGAN = "Caption accuracy, taken way too far."
 PILL = "AGENTIC VIDEO CAPTIONS"
 WIDTH = 1915
@@ -17,15 +17,16 @@ HEIGHT = 821
 
 
 def font(name: str, size: int) -> ImageFont.FreeTypeFont:
-    candidates = [
-        Path("C:/Windows/Fonts") / name,
-        Path("C:/Windows/Fonts/segoeuib.ttf"),
-        Path("C:/Windows/Fonts/arialbd.ttf"),
+    roots = [
+        Path("C:/Windows/Fonts"),
+        Path("/mnt/c/Windows/Fonts"),
+        Path("/usr/share/fonts"),
     ]
-    for candidate in candidates:
-        if candidate.exists():
-            return ImageFont.truetype(str(candidate), size)
-    return ImageFont.load_default()
+    for root in roots:
+        for candidate in (root / name, root / "segoeuib.ttf", root / "arialbd.ttf"):
+            if candidate.exists():
+                return ImageFont.truetype(str(candidate), size)
+    raise SystemExit(f"No usable font found for {name}; aborting instead of bitmap fallback.")
 
 
 TITLE_FONT = font("segoeuib.ttf", 88)

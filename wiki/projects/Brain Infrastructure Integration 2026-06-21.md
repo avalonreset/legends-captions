@@ -14,7 +14,7 @@ tags:
 
 ## Mandate
 
-Legends Ultimate Captions is a core component of the Avalon Reset / Hub Pro video production pipeline. It should be fully cloned or ingested into the brain infrastructure, not represented only by a summary note.
+Legends Captions is a core component of the Avalon Reset / Hub Pro video production pipeline. It should be fully cloned or ingested into the brain infrastructure, not represented only by a summary note.
 
 This project is the implementation home for caption intelligence. Brain mirrors may index it, but this checkout remains the source of truth for code, configs, tests, policies, playbooks, and QA rules.
 
@@ -33,7 +33,7 @@ The brain ingestion should include:
 
 ## Required Brain Behavior
 
-- A future video-production agent should know that Ultimate Captions is the default caption system for polished Shorts and YouTube deliverables.
+- A future video-production agent should know that Legends Captions is the default caption system for polished Shorts and YouTube deliverables.
 - A future caption agent should read the local policies before rendering, especially [[Autonomous Shorts Caption Policy]], [[Caption Intelligence Policy]], [[Timing Authority Policy]], [[Render QA Policy]], and [[qa/Caption QA Checklist|Caption QA Checklist]].
 - User revision feedback should be converted into durable policy/config/test changes when it is reusable.
 - Avalon Reset YouTube should keep production-specific routing notes, while this project keeps reusable caption implementation truth.
@@ -42,7 +42,7 @@ The brain ingestion should include:
 
 A successful brain integration can answer, from the brain layer:
 
-- where the Ultimate Captions implementation checkout lives;
+- where the Legends Captions implementation checkout lives;
 - which policy controls bottom caption scene resets at hard cuts;
 - which policy controls upper static-yellow topic markers;
 - which tests/configs encode accepted caption fixes;

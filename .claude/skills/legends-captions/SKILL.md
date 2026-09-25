@@ -1,9 +1,9 @@
 ---
-name: legends-ultimate-captions
-description: Use Legends Ultimate Captions to review, correct, time, and package video captions with contextual ASR correction and proof-frame QA.
+name: legends-captions
+description: Use Legends Captions to review, correct, time, and package video captions with contextual ASR correction and proof-frame QA.
 ---
 
-# Legends Ultimate Captions
+# Legends Captions
 
 Use this skill for video caption QA and caption deployment tasks.
 

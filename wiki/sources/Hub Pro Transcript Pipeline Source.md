@@ -13,7 +13,7 @@ tags:
 
 Imported raw source:
 
-`E:\legends-ultimate-captions\.raw\sources\hub-pro-video-transcript-and-clipping-sop.md`
+`E:\legends-captions\.raw\sources\hub-pro-video-transcript-and-clipping-sop.md`
 
 Key inheritance:
 

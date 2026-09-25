@@ -13,7 +13,7 @@ tags:
 
 Imported raw source:
 
-`E:\legends-ultimate-captions\.raw\sources\avalon-caption-transcript-and-nfa-timing-sop.md`
+`E:\legends-captions\.raw\sources\avalon-caption-transcript-and-nfa-timing-sop.md`
 
 Key inheritance:
 

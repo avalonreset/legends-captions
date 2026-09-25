@@ -3,12 +3,12 @@ type: skool-post-draft
 status: review
 created: 2026-06-17
 updated: 2026-06-17
-title: "[ legends-ultimate-captions ] Private Community Release"
+title: "[ legends-captions ] Private Community Release"
 draft_kind: "release-post"
 skool_url: "https://www.skool.com/ai-marketing-hub-pro"
 category_label_name: "Pro Resources"
-github_repo: "https://github.com/avalonreset/legends-ultimate-captions"
-github_release: "https://github.com/avalonreset/legends-ultimate-captions/releases/tag/v0.1.0"
+github_repo: "https://github.com/avalonreset/legends-captions"
+github_release: "https://github.com/avalonreset/legends-captions/releases/tag/v0.1.0"
 tags:
   - skool
   - legends
@@ -16,18 +16,18 @@ tags:
   - release
 ---
 
-# Legends Ultimate Captions Private Community Release Post
+# Legends Captions Private Community Release Post
 
 > [!important] Posting Boundary
 > Use **Post Title** as the Skool title and **Draft Post** as the Skool body. Everything under **Internal Notes** is for us only.
 
 ## Post Title
 
-[ legends-ultimate-captions ] Private Community Release
+[ legends-captions ] Private Community Release
 
 ## Draft Post
 
-**Legends Ultimate Captions is a private agent-driven caption system for turning real videos into accurate, proofed, active-word caption packages.**
+**Legends Captions is a private agent-driven caption system for turning real videos into accurate, proofed, active-word caption packages.**
 
 This is for the part of video production where most tools still fall apart.
 
@@ -47,7 +47,7 @@ The timing that feels just a little late.
 
 The caption that disappears during a pause even though the thought is not done.
 
-That is the lane for Legends Ultimate Captions.
+That is the lane for Legends Captions.
 
 This release is exclusive to AI Marketing Hub Pro members.
 
@@ -63,7 +63,7 @@ Hope the transcript is not embarrassing.
 
 Then manually scrub the whole thing anyway.
 
-Legends Ultimate Captions is built around a different idea:
+Legends Captions is built around a different idea:
 
 If the video matters, captions deserve an actual deployment system.
 
@@ -100,17 +100,17 @@ The system should understand the video well enough to fix obvious caption nonsen
 
 ### Examples You Can Give Your Agent
 
-Use Legends Ultimate Captions to caption this vertical video, fix obvious ASR mistakes from context, and render active-word captions with proof frames.
+Use Legends Captions to caption this vertical video, fix obvious ASR mistakes from context, and render active-word captions with proof frames.
 
-Use Legends Ultimate Captions to inspect this transcript for model-name mistakes, acronyms, grammar slips, and caption grouping problems before we render.
+Use Legends Captions to inspect this transcript for model-name mistakes, acronyms, grammar slips, and caption grouping problems before we render.
 
-Use Legends Ultimate Captions to keep `L O R A` as individual timed letters because the speaker spells it out.
+Use Legends Captions to keep `L O R A` as individual timed letters because the speaker spells it out.
 
-Use Legends Ultimate Captions to build a caption package for this clip with the final video, ASS file, correction manifest, render manifest, and proof frames.
+Use Legends Captions to build a caption package for this clip with the final video, ASS file, correction manifest, render manifest, and proof frames.
 
-Use Legends Ultimate Captions to compare the first caption render against the proof frames and tell me exactly what should be fixed before posting.
+Use Legends Captions to compare the first caption render against the proof frames and tell me exactly what should be fixed before posting.
 
-Use Legends Ultimate Captions to turn these user caption fixes into reusable policy and tests so the next video gets them right the first time.
+Use Legends Captions to turn these user caption fixes into reusable policy and tests so the next video gets them right the first time.
 
 ### Important Boundary
 
@@ -129,10 +129,10 @@ We are trying to stop shipping dumb caption mistakes that a production-aware age
 ### Links
 
 Private repo:
-https://github.com/avalonreset/legends-ultimate-captions
+https://github.com/avalonreset/legends-captions
 
 Latest release:
-https://github.com/avalonreset/legends-ultimate-captions/releases/tag/v0.1.0
+https://github.com/avalonreset/legends-captions/releases/tag/v0.1.0
 
 If GitHub shows a 404, send over your GitHub username and access can be sorted out.
 
@@ -144,11 +144,11 @@ If GitHub shows a 404, send over your GitHub username and access can be sorted o
 
 Banner concepts:
 
-`E:\legends-ultimate-captions\release\art\banner-concepts`
+`E:\legends-captions\release\art\banner-concepts`
 
 Square meme options:
 
-`E:\legends-ultimate-captions\release\art\square-meme-options`
+`E:\legends-captions\release\art\square-meme-options`
 
 Recommended first post image:
 

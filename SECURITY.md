@@ -8,8 +8,8 @@
 
 ## Reporting a Vulnerability
 
-If you discover a security issue or vulnerability in Legends Ultimate
-Captions, please send an advisory email directly to:
+If you discover a security issue or vulnerability in Legends Captions,
+please send an advisory email directly to:
 
 `advisory@cto-legends.com`
 

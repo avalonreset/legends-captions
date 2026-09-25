@@ -10,11 +10,11 @@ tags:
 
 # Hot
 
-Legends Ultimate Captions is being split out as its own project at `E:\legends-ultimate-captions`.
+Legends Captions is being split out as its own project at `E:\legends-captions`.
 
 Current rule that should affect the next run: treat user caption fixes as policy candidates. Every repeated or obvious fix should become one of: glossary rule, contextual phrase repair, timing/grouping rule, QA checklist item, or human-review exception.
 
-New infrastructure mandate from 2026-06-21: Legends Ultimate Captions is a core video production dependency and must be fully cloned or ingested into the brain infrastructure. The brain layer should index the full project, including `wiki`, `src`, `tests`, `configs`, `scripts`, `skills`, `examples`, `docs`, `assets`, `release`, and `.raw` source lineage. See [[projects/Brain Infrastructure Integration 2026-06-21]].
+New infrastructure mandate from 2026-06-21: Legends Captions is a core video production dependency and must be fully cloned or ingested into the brain infrastructure. The brain layer should index the full project, including `wiki`, `src`, `tests`, `configs`, `scripts`, `skills`, `examples`, `docs`, `assets`, `release`, and `.raw` source lineage. See [[projects/Brain Infrastructure Integration 2026-06-21]].
 
 New revision-learning mandate: every Short production should reduce future revision count. Accepted user feedback must be classified and promoted into policy, config/defaults, regression tests, or QA gates when reusable. If a captured failure recurs, treat it as a regression in the caption package runner or QA gate.
 

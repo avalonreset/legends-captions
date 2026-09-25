@@ -3,8 +3,8 @@ requires = ["setuptools>=68", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "legends-ultimate-captions"
-version = "0.1.0"
+name = "legends-captions"
+version = "0.2.0"
 description = "Agent-driven caption deployment system with contextual correction, timing policy, and QA manifests."
 readme = "README.md"
 requires-python = ">=3.10"
@@ -24,10 +24,10 @@ keywords = [
 dependencies = []
 
 [project.scripts]
-legends-captions = "legends_ultimate_captions.cli:main"
+legends-captions = "legends_captions.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
 
 [tool.setuptools.package-data]
-legends_ultimate_captions = ["data/*.json"]
+legends_captions = ["data/*.json"]
