@@ -86,18 +86,11 @@ python -m unittest discover -s tests
 | `sticking the 30` | `sticking to 30` |
 | `L O R A` | preserve per-letter highlight timing |
 
-## Agent Support
+## Agent setup (via `cto-legends`)
 
-This repo includes a thin adapter for each agent surface:
+Part of the [CTO Legends](https://github.com/avalonreset/cto-legends) ecosystem. `cto-legends` is the only registered skill; this repo vendors a pinned copy at `skills/cto-legends/SKILL.md`.
 
-- `AGENTS.md` for Codex project instructions.
-- `CLAUDE.md` and `.claude/skills/legends-captions/SKILL.md` for Claude Code.
-- `GEMINI.md` and `gemini-extension.json` for Gemini CLI.
-- `skills/legends-captions/SKILL.md` as the portable Agent Skills entrypoint.
-
-All adapters point to the same policies and the same CLI. There should not be a
-Codex version of the caption workflow, a Claude version, and a Gemini version.
-There is one caption doctrine with agent-specific launch surfaces.
+Install with `cto-legends install legends-captions`, then follow the module recipe the router loads. Do not register this module as its own skill.
 
 ## Project Map
 
@@ -107,7 +100,7 @@ assets/     README banner and social preview
 configs/    reusable caption style and correction defaults
 docs/       install, architecture, compatibility, release, and QA docs
 release/    Skool post drafts and promo copy (art staging stays local)
-skills/     portable Agent Skills package
+skills/     vendored `cto-legends` router skill copy (only registered skill)
 src/        Python package for policy, correction, ASS helpers, and manifests
 tests/      regression tests created from real caption fixes
 wiki/       product brain for policies, playbooks, agents, and QA
@@ -152,7 +145,7 @@ Font License, referenced by name in the default ASS style only).
 
 ## Status
 
-Current release: `v0.2.0`.
+Current release: `v0.1.0`.
 
 License: MIT. See
 [LICENSE](LICENSE).

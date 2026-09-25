@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.0 - 2026-09-25 - Router-native reset
+
+- Reset to the router-native generation: `cto-legends` is the only registered skill, this repo vendors a pinned copy at `skills/cto-legends/SKILL.md` (router commit `6975dcbf073e5eec7a30ce6a04a6975238c61158`).
+- Removed the per-module skill surface: `skills/legends-captions/`, the `.claude/skills/` mirror, `CLAUDE.md`, `CODEX.md`, `GEMINI.md`, and `gemini-extension.json`.
+- Added the contract agent block to `README.md`, `.legends-module`, and contract CI.
+
 ## v0.2.0 - Renamed to Legends Captions
 
 - Renamed the project from Legends Ultimate Captions to Legends Captions.

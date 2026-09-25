@@ -35,7 +35,7 @@ This project is the standalone caption system for Avalon Reset and Hub Pro video
 
 ## Release Packaging
 
-- Keep `README.md`, `CHANGELOG.md`, `docs/release-checklist.md`, `skills/legends-captions/SKILL.md`, `CLAUDE.md`, `GEMINI.md`, and `AGENTS.md` aligned.
+- Keep `README.md`, `CHANGELOG.md`, `docs/release-checklist.md`, `skills/cto-legends/SKILL.md`, and `AGENTS.md` aligned.
 - Skool release drafts live under `release/skool/`; Hub Pro mirror drafts may live under `E:\ai-marketing-hub-pro\wiki\drafts\skool`.
 - Release art lives under `release/art/`; `assets/banner.webp` is the current README banner.
 - Do not publish to Skool until repo and release URLs are real and the user approves the copy/art.

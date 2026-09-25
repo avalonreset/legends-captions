@@ -1,44 +1,20 @@
 # Agent Compatibility
 
-The goal is one core workflow with thin adapters for each agent runtime.
+One caption doctrine, one registered skill. `cto-legends` is the only
+registered skill; this repo vendors a pinned copy at
+`skills/cto-legends/SKILL.md`. Do not register this module as its own skill.
 
-## Codex
-
-Codex uses `AGENTS.md` project instructions. OpenAI's Codex documentation says
-repository-level files keep Codex aware of project norms while inheriting global
-defaults, and that a repository root `AGENTS.md` is the right place for basic
-project setup and expectations.
-
-Reference:
-
-- https://developers.openai.com/codex/guides/agents-md#layer-project-instructions
-
-## Claude
-
-Claude Code supports skills as directories with a `SKILL.md` entrypoint. This
-repo includes:
+## Router install
 
 ```text
-.claude/skills/legends-captions/SKILL.md
+cto-legends install legends-captions
 ```
 
-## Gemini CLI
+The router loads this repo's README plus the policy pages, config files,
+tests, and CLI as ordinary markdown on demand.
 
-Gemini CLI can load project context through `GEMINI.md` and extension metadata.
-This repo includes:
+## Project instructions
 
-```text
-gemini-extension.json
-GEMINI.md
-```
-
-## Portable Agent Skill
-
-The portable Agent Skills entrypoint is:
-
-```text
-skills/legends-captions/SKILL.md
-```
-
-All surfaces route to the same policy pages, config files, tests, and CLI.
-
+`AGENTS.md` at the repo root carries build and test instructions for
+repository-aware agents. It is plain project documentation, not a skill
+registration.

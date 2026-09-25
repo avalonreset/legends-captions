@@ -1,13 +1,17 @@
 # Agent Install Guide
 
-Legends Captions is designed to be installed as a repo plus an agent
-surface. The Python package provides the commands. The agent files teach Codex,
-Claude, or Gemini how to operate the workflow.
+Legends Captions installs through the `cto-legends` router. The Python
+package provides the commands; the router loads this repo's README plus the
+policy pages as the module recipe. This module is never registered as its
+own skill.
 
-## Codex
+## Router install
 
-Codex reads repository-level `AGENTS.md` files as project instructions. Open
-Codex from the repo root and ask it to read the project instructions.
+```text
+cto-legends install legends-captions
+```
+
+Then set up the repo:
 
 ```powershell
 git clone https://github.com/avalonreset/legends-captions.git
@@ -24,31 +28,9 @@ captions, apply contextual correction policy, render proof frames, and give me
 the final caption package with manifests.
 ```
 
-## Claude Code
-
-Use the packaged Claude skill:
-
-```text
-.claude/skills/legends-captions/SKILL.md
-```
-
-Recommended prompt:
-
-```text
-Use the legends-captions skill. Start with the doctor command, then
-build a caption QA plan before rendering.
-```
-
-## Gemini CLI
-
-Use `gemini-extension.json` and `GEMINI.md` from the repo root.
-
-Recommended prompt:
-
-```text
-Use the Legends Captions extension to review caption text, identify
-likely ASR errors, and flag proof-frame checks before final render.
-```
+Start with the doctor command, then build a caption QA plan before rendering.
+Review caption text, identify likely ASR errors, and flag proof-frame checks
+before final render.
 
 ## Full Runtime Notes
 
