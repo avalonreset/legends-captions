@@ -1,0 +1,245 @@
+{
+  "schema": "avalonreset.vertical-active-word-captions.v1",
+  "source_video": "D:\\PRODUCTION\\soulx-flashface\\soulx_flashface_TT_1080p_60fps_4k.mp4",
+  "timing_source": "nfa_ctm",
+  "source_ctm": "D:\\PRODUCTION\\soulx-flashface\\tiktok-caption-package-20260617\\nfa\\nfa_output\\ctm\\words\\soulx_flashface_TT_1080p_60fps_4k_16k.ctm",
+  "source_words_json": "D:\\PRODUCTION\\soulx-flashface\\tiktok-caption-package-20260617\\transcript-parakeet\\soulx_flashface_TT_1080p_60fps_4k_parakeet.words.json",
+  "source_transcript_json": "D:\\PRODUCTION\\soulx-flashface\\tiktok-caption-package-20260617\\transcript-parakeet\\soulx_flashface_TT_1080p_60fps_4k_parakeet.json",
+  "raw_words": 1598,
+  "caption_words": 1580,
+  "repeat_collapses": [
+    {
+      "start": 313.28,
+      "dropped": "very",
+      "kept": "very,",
+      "gap": 0.0,
+      "reason": "immediate repeated word collapsed"
+    },
+    {
+      "start": 446.08,
+      "dropped": "it's",
+      "kept": "it's",
+      "gap": 0.0,
+      "reason": "immediate repeated word collapsed"
+    }
+  ],
+  "filler_cleanup": [
+    {
+      "start": 13.52,
+      "dropped": "uh",
+      "reason": "spoken filler omitted from captions"
+    },
+    {
+      "start": 178.96,
+      "dropped": "like,",
+      "reason": "quote-padding or be-verb filler like"
+    },
+    {
+      "start": 195.12,
+      "dropped": "uh",
+      "reason": "spoken filler omitted from captions"
+    },
+    {
+      "start": 206.0,
+      "dropped": "uh",
+      "reason": "spoken filler omitted from captions"
+    },
+    {
+      "start": 399.04,
+      "dropped": "uh",
+      "reason": "spoken filler omitted from captions"
+    },
+    {
+      "start": 452.08,
+      "dropped": "like,",
+      "reason": "quote-padding or be-verb filler like"
+    }
+  ],
+  "contextual_corrections": [
+    {
+      "start": 23.04,
+      "end": 25.36,
+      "from": "exacting 2.0,",
+      "to": "EXCITING AS SEEDANCE 2.0,",
+      "reason": "context correction: exciting as Seedance 2.0"
+    },
+    {
+      "start": 34.48,
+      "end": 35.04,
+      "from": "Soul X",
+      "to": "SOULX",
+      "reason": "product name: SoulX"
+    },
+    {
+      "start": 53.12,
+      "end": 53.92,
+      "from": "media.",
+      "to": "MEDIUM.",
+      "reason": "model name: Stable Audio 3 Medium"
+    },
+    {
+      "start": 56.08,
+      "end": 56.96,
+      "from": "low raw.",
+      "to": "LORA.",
+      "reason": "AI term: LoRA"
+    },
+    {
+      "start": 58.08,
+      "end": 60.24,
+      "from": "L O R A.",
+      "to": "L O R A.",
+      "reason": "spelled acronym preserved for letter-level highlight"
+    },
+    {
+      "start": 99.36,
+      "end": 99.44,
+      "from": "the",
+      "to": "TO",
+      "reason": "context correction: sticking to 30 fps"
+    },
+    {
+      "start": 156.48,
+      "end": 157.36,
+      "from": "low-ra.",
+      "to": "LORA.",
+      "reason": "AI term: LoRA"
+    },
+    {
+      "start": 158.48,
+      "end": 160.56,
+      "from": "L O R A.",
+      "to": "L O R A.",
+      "reason": "spelled acronym preserved for letter-level highlight"
+    },
+    {
+      "start": 234.32,
+      "end": 234.4,
+      "from": "is",
+      "to": "DOES",
+      "reason": "grammar correction: what does this unlock"
+    },
+    {
+      "start": 332.32,
+      "end": 332.72,
+      "from": "Hey Gen",
+      "to": "HEYGEN",
+      "reason": "product name: HeyGen"
+    },
+    {
+      "start": 353.6,
+      "end": 354.24,
+      "from": "Soul X",
+      "to": "SOULX",
+      "reason": "product name: SoulX"
+    },
+    {
+      "start": 354.48,
+      "end": 355.44,
+      "from": "Flash Head.",
+      "to": "FLASHHEAD.",
+      "reason": "model name: FlashHead"
+    },
+    {
+      "start": 380.72,
+      "end": 381.6,
+      "from": "Flash Talk",
+      "to": "FLASHTALK",
+      "reason": "model name: FlashTalk"
+    },
+    {
+      "start": 383.68,
+      "end": 384.72,
+      "from": "Flash Head.",
+      "to": "FLASHHEAD.",
+      "reason": "model name: FlashHead"
+    },
+    {
+      "start": 454.8,
+      "end": 455.68,
+      "from": "flash head.",
+      "to": "FLASHHEAD.",
+      "reason": "model name: FlashHead"
+    },
+    {
+      "start": 456.8,
+      "end": 457.76,
+      "from": "flash head,",
+      "to": "FLASHHEAD,",
+      "reason": "model name: FlashHead"
+    },
+    {
+      "start": 475.68,
+      "end": 476.24,
+      "from": "Soul X",
+      "to": "SOULX",
+      "reason": "product name: SoulX"
+    },
+    {
+      "start": 528.32,
+      "end": 529.04,
+      "from": "Hey Gen.",
+      "to": "HEYGEN.",
+      "reason": "product name: HeyGen"
+    },
+    {
+      "start": 553.36,
+      "end": 553.92,
+      "from": "C dance",
+      "to": "SEEDANCE",
+      "reason": "AI video model name: Seedance"
+    }
+  ],
+  "style": {
+    "play_res": [
+      2160,
+      3840
+    ],
+    "caption_anchor": [
+      1080,
+      2760
+    ],
+    "font_name": "Montserrat Black",
+    "font_size": 156,
+    "measure_font_size": 112,
+    "active_color": "&H00F5F500&",
+    "white_color": "&H00FFFFFF&",
+    "bubble_padding": 24,
+    "bubble_radius": 32,
+    "bubble_join_mode": "per_line_rounded_all_corners",
+    "bubble_alpha_hex": "56",
+    "text_vertical_adjust": -8
+  },
+  "timing": {
+    "group_break_gap_seconds": 0.5,
+    "hold_gap_seconds": 0.85,
+    "highlight_lead_seconds": 0.1,
+    "repeat_collapse_gap_seconds": 0.72
+  },
+  "ass_report": {
+    "ass": "D:\\PRODUCTION\\soulx-flashface\\tiktok-caption-package-20260617\\captions\\soulx_flashface_TT_activeword_contextclean_nfa_v2.ass",
+    "groups": 295,
+    "events": 1580,
+    "max_lines": 2,
+    "max_line_chars": 21,
+    "max_line_width": 1666,
+    "held_gap_count": 159,
+    "max_gap_held": 0.78
+  },
+  "first_word": {
+    "source_index": 0,
+    "start": 0.16,
+    "end": 0.24,
+    "word": "So",
+    "timing_source": "nfa_ctm",
+    "text": "SO"
+  },
+  "last_word": {
+    "source_index": 1597,
+    "start": 592.56,
+    "end": 594.16,
+    "word": "description.",
+    "timing_source": "nfa_ctm",
+    "text": "DESCRIPTION."
+  }
+}

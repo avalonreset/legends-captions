@@ -1,0 +1,60 @@
+{
+  "profile": "vertical_4k_60fps_active_word",
+  "canvas": {
+    "width": 2160,
+    "height": 3840,
+    "anchor_x": 1080,
+    "anchor_y": 2760
+  },
+  "style": {
+    "font_family": "Montserrat Black",
+    "font_size": 156,
+    "inactive_color": "white",
+    "active_color": "cyan",
+    "bubble_color": "black",
+    "bubble_opacity": 0.76,
+    "max_lines": 2,
+    "uppercase": true,
+    "preserve_question_marks": true,
+    "drop_sentence_final_periods": true
+  },
+  "timing": {
+    "highlight_lead_seconds": 0.09,
+    "hold_gap_seconds": 0.85,
+    "word_boundary_authority": "nemo_forced_aligner",
+    "fallback_boundary_authority": "parakeet_word_timestamps"
+  },
+  "asr": {
+    "preferred_model": "nvidia/parakeet-tdt-0.6b-v3",
+    "preferred_runtime": null,
+    "chunk_long_media": true,
+    "_preferred_runtime_note": "Optional override, e.g. wsl:/home/you/.venvs/speech/bin/python. Leave null to use the current Python."
+  },
+  "correction_examples": [
+    {
+      "heard": "low raw",
+      "correct": "LoRA",
+      "type": "domain_term"
+    },
+    {
+      "heard": "C dance 2.0",
+      "correct": "Seedance 2.0",
+      "type": "model_name"
+    },
+    {
+      "heard": "what is this unlock",
+      "correct": "what does this unlock",
+      "type": "grammar"
+    },
+    {
+      "heard": "sticking the 30",
+      "correct": "sticking to 30",
+      "type": "idiom"
+    },
+    {
+      "heard": "L O R A",
+      "correct": "L O R A",
+      "type": "spoken_acronym_timing"
+    }
+  ]
+}

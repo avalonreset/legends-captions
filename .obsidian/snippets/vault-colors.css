@@ -1,0 +1,11 @@
+body {
+  --luc-accent: #00d9ff;
+  --luc-bg-soft: #101318;
+  --luc-text-strong: #ffffff;
+}
+
+.callout[data-callout="caption-policy"] {
+  --callout-color: 0, 217, 255;
+  --callout-icon: lucide-captions;
+}
+

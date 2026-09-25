@@ -1,0 +1,60 @@
+{
+  "schema": "avalonreset.caption-render-receipt.v2",
+  "created": "2026-06-17",
+  "source_video": "D:/PRODUCTION/soulx-flashface/soulx_flashface_TT_1080p_60fps_4k.mp4",
+  "output_video": "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/render/soulx_flashface_TT_contextclean_captioned_hevc_4k60_v2.mp4",
+  "caption_ass": "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/captions/soulx_flashface_TT_activeword_contextclean_nfa_v2.ass",
+  "caption_manifest": "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/captions/soulx_flashface_TT_activeword_contextclean_nfa_v2_manifest.json",
+  "source_ctm": "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/nfa/nfa_output/ctm/words/soulx_flashface_TT_1080p_60fps_4k_16k.ctm",
+  "correction_summary": [
+    "exacting 2.0 -> EXCITING AS SEEDANCE 2.0",
+    "spelled L O R A preserved as per-letter highlight tokens",
+    "sticking the 30 frames -> sticking TO 30 frames",
+    "what is this unlock -> WHAT DOES THIS UNLOCK",
+    "everyone needs to calm the fuck down grouped as a coherent sentence"
+  ],
+  "render_settings": {
+    "video_codec": "hevc_nvenc",
+    "preset": "p5",
+    "tune": "hq",
+    "rate_control": "vbr",
+    "cq": 19,
+    "target_bitrate": "45M",
+    "maxrate": "80M",
+    "bufsize": "160M",
+    "profile": "main10",
+    "pixel_format": "p010le",
+    "tag": "hvc1",
+    "audio": "copy",
+    "movflags": "+faststart"
+  },
+  "ffprobe_verified": {
+    "video_codec": "hevc",
+    "video_profile": "Main 10",
+    "width": 2160,
+    "height": 3840,
+    "pix_fmt": "yuv420p10le",
+    "frame_rate": "60/1",
+    "video_duration": 595.45,
+    "audio_codec": "aac",
+    "audio_profile": "LC",
+    "format_duration": 595.452993,
+    "size_bytes": 1622621134,
+    "bit_rate": 21800157
+  },
+  "final_proof_frames": [
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0023-exciting-seedance-a.jpg",
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0024-seedance-20.jpg",
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0058-lora-L.jpg",
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0058-lora-O.jpg",
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0059-lora-R.jpg",
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0059-lora-A.jpg",
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0140-to-30fps.jpg",
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0354-what-does-unlock.jpg",
+    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0606-calm-fuck-down.jpg"
+  ],
+  "pipeline_updates": [
+    "E:/avalonreset-youtube/scripts/build_vertical_active_word_captions.py now supports virtual contextual correction splits and per-letter acronym highlighting.",
+    "E:/avalonreset-youtube/wiki/sources/Caption Transcript and NFA Timing SOP.md now documents per-letter acronym timing for spelled words."
+  ]
+}

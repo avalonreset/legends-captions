@@ -1,0 +1,54 @@
+{
+  "schema": "legends_ultimate_captions.correction_glossary.v1",
+  "updated": "2026-06-17",
+  "terms": [
+    {
+      "canonical": "LoRA",
+      "heard_as": ["low raw", "low ra", "low-ra", "lora"],
+      "context": ["model training", "adapter", "fine-tuning", "AI video", "Stable Audio"],
+      "automation": "high_confidence"
+    },
+    {
+      "canonical": "Seedance 2.0",
+      "heard_as": ["C dance 2.0", "sea dance 2.0", "exacting 2.0"],
+      "context": ["AI video model", "current viral AI video trend", "avatar workflow"],
+      "automation": "context_required"
+    },
+    {
+      "canonical": "RTX 4090",
+      "heard_as": ["RTX4090", "RT X 4090"],
+      "context": ["GPU", "VRAM", "local AI"],
+      "automation": "high_confidence"
+    },
+    {
+      "canonical": "HeyGen",
+      "heard_as": ["Hey Gen"],
+      "context": ["AI avatar", "talking avatar"],
+      "automation": "high_confidence"
+    },
+    {
+      "canonical": "SoulX FlashFace",
+      "heard_as": ["Soul X Flash Head", "Soul X Flash Face"],
+      "context": ["project name", "avatar workflow"],
+      "automation": "context_required"
+    }
+  ],
+  "phrase_repairs": [
+    {
+      "heard": "what is this unlock",
+      "correct": "what does this unlock",
+      "type": "grammar"
+    },
+    {
+      "heard": "sticking the 30",
+      "correct": "sticking to 30",
+      "type": "idiom"
+    },
+    {
+      "heard": "fuckdown",
+      "correct": "fuck down",
+      "type": "token_split"
+    }
+  ]
+}
+

@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "legends-ultimate-captions"
+version = "0.1.0"
+description = "Agent-driven caption deployment system with contextual correction, timing policy, and QA manifests."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [
+  { name = "Avalon Reset" }
+]
+license = "MIT"
+keywords = [
+  "video captions",
+  "auto captions",
+  "subtitle generator",
+  "forced alignment",
+  "caption QA",
+  "active word captions",
+  "agentic workflow"
+]
+dependencies = []
+
+[project.scripts]
+legends-captions = "legends_ultimate_captions.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+legends_ultimate_captions = ["data/*.json"]
