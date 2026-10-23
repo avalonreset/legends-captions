@@ -20,7 +20,7 @@ Benchmark the 33 Opus Clip exports downloaded from the same Braincraft v6 raw so
 Canonical local audit folder:
 
 ```text
-D:\braincraft_v6_only_production_20260609\opus_clip_audit_20260609
+<production-root>\braincraft_v6_only_production_20260609\opus_clip_audit_20260609
 ```
 
 Audit script:

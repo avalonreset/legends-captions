@@ -28,7 +28,7 @@ Official references:
 - WSL speech environment: `/home/you/.venvs/legends-speech`
 - Confirmed stack: `nemo 2.7.3`, `nemo.collections.asr`, PyTorch with CUDA available, RTX 4090.
 - Current model: `stt_en_fastconformer_hybrid_large_pc`
-- Current Braincraft run output: `D:\braincraft_v6_only_production_20260609\nfa_v2_20260612`
+- Current Braincraft run output: `<production-root>\braincraft_v6_only_production_20260609\nfa_v2_20260612`
 
 The installed NeMo wheel did not expose the `tools/nemo_forced_aligner` command directly, so the current integration uses the sparse source checkout. The local source copy also needed a small helper patch in `utils/data_prep.py` so relative manifest audio paths resolve correctly.
 
@@ -37,11 +37,11 @@ The installed NeMo wheel did not expose the `tools/nemo_forced_aligner` command 
 ```powershell
 python .\scripts\run_braincraft_v6_nfa_alignment.py `
   --candidate-json .\scripts\braincraft_v6_nfa_v2_candidates.json `
-  --output-dir "D:\braincraft_v6_only_production_20260609\nfa_v2_20260612" `
+  --output-dir "<production-root>\braincraft_v6_only_production_20260609\nfa_v2_20260612" `
   --clean-nfa-output --run
 
 python .\scripts\refine_braincraft_v6_nfa_boundaries.py `
-  --nfa-dir "D:\braincraft_v6_only_production_20260609\nfa_v2_20260612" `
+  --nfa-dir "<production-root>\braincraft_v6_only_production_20260609\nfa_v2_20260612" `
   --out-json .\scripts\braincraft_v6_nfa_v2_refined_candidates.json `
   --comparison-json .\scripts\braincraft_v6_nfa_v2_comparison.json
 ```
@@ -61,6 +61,6 @@ python .\scripts\refine_braincraft_v6_nfa_boundaries.py `
 - Editorial candidates: `<hub-pro-checkout>\scripts\braincraft_v6_nfa_v2_candidates.json`
 - NFA-refined candidates: `<hub-pro-checkout>\scripts\braincraft_v6_nfa_v2_refined_candidates.json`
 - Old-vs-new comparison JSON: `<hub-pro-checkout>\scripts\braincraft_v6_nfa_v2_comparison.json`
-- NFA CTM words: `D:\braincraft_v6_only_production_20260609\nfa_v2_20260612\nfa_output\ctm\words`
-- Clean captioned 4K renders: `D:\braincraft_v6_only_production_20260609\clean_av1_clips_nfa_v2_20260612`
-- Final music-bed renders: `D:\braincraft_v6_only_production_20260609\final_av1_music_nfa_v2_20260612`
+- NFA CTM words: `<production-root>\braincraft_v6_only_production_20260609\nfa_v2_20260612\nfa_output\ctm\words`
+- Clean captioned 4K renders: `<production-root>\braincraft_v6_only_production_20260609\clean_av1_clips_nfa_v2_20260612`
+- Final music-bed renders: `<production-root>\braincraft_v6_only_production_20260609\final_av1_music_nfa_v2_20260612`

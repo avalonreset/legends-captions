@@ -1,11 +1,11 @@
 {
   "schema": "avalonreset.caption-render-receipt.v2",
   "created": "2026-06-17",
-  "source_video": "D:/PRODUCTION/soulx-flashface/soulx_flashface_TT_1080p_60fps_4k.mp4",
-  "output_video": "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/render/soulx_flashface_TT_contextclean_captioned_hevc_4k60_v2.mp4",
-  "caption_ass": "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/captions/soulx_flashface_TT_activeword_contextclean_nfa_v2.ass",
-  "caption_manifest": "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/captions/soulx_flashface_TT_activeword_contextclean_nfa_v2_manifest.json",
-  "source_ctm": "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/nfa/nfa_output/ctm/words/soulx_flashface_TT_1080p_60fps_4k_16k.ctm",
+  "source_video": "./runs/soulx-flashface/soulx_flashface_TT_1080p_60fps_4k.mp4",
+  "output_video": "./runs/soulx-flashface/tiktok-caption-package-20260617/render/soulx_flashface_TT_contextclean_captioned_hevc_4k60_v2.mp4",
+  "caption_ass": "./runs/soulx-flashface/tiktok-caption-package-20260617/captions/soulx_flashface_TT_activeword_contextclean_nfa_v2.ass",
+  "caption_manifest": "./runs/soulx-flashface/tiktok-caption-package-20260617/captions/soulx_flashface_TT_activeword_contextclean_nfa_v2_manifest.json",
+  "source_ctm": "./runs/soulx-flashface/tiktok-caption-package-20260617/nfa/nfa_output/ctm/words/soulx_flashface_TT_1080p_60fps_4k_16k.ctm",
   "correction_summary": [
     "exacting 2.0 -> EXCITING AS SEEDANCE 2.0",
     "spelled L O R A preserved as per-letter highlight tokens",
@@ -43,18 +43,18 @@
     "bit_rate": 21800157
   },
   "final_proof_frames": [
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0023-exciting-seedance-a.jpg",
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0024-seedance-20.jpg",
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0058-lora-L.jpg",
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0058-lora-O.jpg",
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0059-lora-R.jpg",
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0059-lora-A.jpg",
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0140-to-30fps.jpg",
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0354-what-does-unlock.jpg",
-    "D:/PRODUCTION/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0606-calm-fuck-down.jpg"
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0023-exciting-seedance-a.jpg",
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0024-seedance-20.jpg",
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0058-lora-L.jpg",
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0058-lora-O.jpg",
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0059-lora-R.jpg",
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0059-lora-A.jpg",
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0140-to-30fps.jpg",
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0354-what-does-unlock.jpg",
+    "./runs/soulx-flashface/tiktok-caption-package-20260617/proof-frames/final-v2-proof-0606-calm-fuck-down.jpg"
   ],
   "pipeline_updates": [
-    "E:/avalonreset-youtube/scripts/build_vertical_active_word_captions.py now supports virtual contextual correction splits and per-letter acronym highlighting.",
-    "E:/avalonreset-youtube/wiki/sources/Caption Transcript and NFA Timing SOP.md now documents per-letter acronym timing for spelled words."
+    "<workspace>/avalonreset-youtube/scripts/build_vertical_active_word_captions.py now supports virtual contextual correction splits and per-letter acronym highlighting.",
+    "<workspace>/avalonreset-youtube/wiki/sources/Caption Transcript and NFA Timing SOP.md now documents per-letter acronym timing for spelled words."
   ]
 }

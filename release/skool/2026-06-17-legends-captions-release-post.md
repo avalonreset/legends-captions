@@ -18,9 +18,6 @@ tags:
 
 # Legends Captions Private Community Release Post
 
-> [!important] Posting Boundary
-> Use **Post Title** as the Skool title and **Draft Post** as the Skool body. Everything under **Internal Notes** is for us only.
-
 ## Post Title
 
 [ legends-captions ] Private Community Release
@@ -137,40 +134,3 @@ https://github.com/avalonreset/legends-captions/releases/tag/v0.1.0
 If GitHub shows a 404, send over your GitHub username and access can be sorted out.
 
 ![[release/art/square-meme-options/option-02-fake-safety-label.png]]
-
-## Internal Notes
-
-### Artwork
-
-Banner concepts:
-
-`E:\legends-captions\release\art\banner-concepts`
-
-Square meme options:
-
-`E:\legends-captions\release\art\square-meme-options`
-
-Recommended first post image:
-
-`option-02-fake-safety-label.png`
-
-Other strong options:
-
-- `option-04-museum-correct-caption.png`
-- `option-12-impossible-caption-tools.png`
-- `option-09-caption-war-room.png`
-
-### Style Notes Used
-
-- Lead is direct: private agent-driven caption system for accurate active-word caption packages.
-- Examples are natural agent prompts, not command dumps.
-- The boundary is practical: unclear audio gets review, obvious context gets corrected.
-- The post differentiates against generic auto captions without becoming a generic tool rant.
-- Artwork stays at the bottom of the post.
-
-### Publish Notes
-
-- Suggested Skool category: `Pro Resources`.
-- Do not publish until the GitHub repo and release URL exist.
-- If publishing through Legends Skool CLI later, extract only `## Draft Post`.
-

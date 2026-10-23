@@ -24,7 +24,7 @@ tags:
 
 ## 2026-06-17
 
-- Created standalone project `E:\legends-captions`.
+- Created standalone project `<legends-captions>`.
 - Imported source lineage from Avalon Reset YouTube and AI Marketing Hub Pro into `.raw/`.
 - Seeded policy engine and regression tests from recent SoulX FlashFace caption corrections.
 - Added Codex, Claude, and Gemini operating instructions.

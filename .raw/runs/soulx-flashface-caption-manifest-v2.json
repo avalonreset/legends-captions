@@ -1,10 +1,10 @@
 {
   "schema": "avalonreset.vertical-active-word-captions.v1",
-  "source_video": "D:\\PRODUCTION\\soulx-flashface\\soulx_flashface_TT_1080p_60fps_4k.mp4",
+  "source_video": "./runs/soulx-flashface\\soulx_flashface_TT_1080p_60fps_4k.mp4",
   "timing_source": "nfa_ctm",
-  "source_ctm": "D:\\PRODUCTION\\soulx-flashface\\tiktok-caption-package-20260617\\nfa\\nfa_output\\ctm\\words\\soulx_flashface_TT_1080p_60fps_4k_16k.ctm",
-  "source_words_json": "D:\\PRODUCTION\\soulx-flashface\\tiktok-caption-package-20260617\\transcript-parakeet\\soulx_flashface_TT_1080p_60fps_4k_parakeet.words.json",
-  "source_transcript_json": "D:\\PRODUCTION\\soulx-flashface\\tiktok-caption-package-20260617\\transcript-parakeet\\soulx_flashface_TT_1080p_60fps_4k_parakeet.json",
+  "source_ctm": "./runs/soulx-flashface\\tiktok-caption-package-20260617\\nfa\\nfa_output\\ctm\\words\\soulx_flashface_TT_1080p_60fps_4k_16k.ctm",
+  "source_words_json": "./runs/soulx-flashface\\tiktok-caption-package-20260617\\transcript-parakeet\\soulx_flashface_TT_1080p_60fps_4k_parakeet.words.json",
+  "source_transcript_json": "./runs/soulx-flashface\\tiktok-caption-package-20260617\\transcript-parakeet\\soulx_flashface_TT_1080p_60fps_4k_parakeet.json",
   "raw_words": 1598,
   "caption_words": 1580,
   "repeat_collapses": [
@@ -217,7 +217,7 @@
     "repeat_collapse_gap_seconds": 0.72
   },
   "ass_report": {
-    "ass": "D:\\PRODUCTION\\soulx-flashface\\tiktok-caption-package-20260617\\captions\\soulx_flashface_TT_activeword_contextclean_nfa_v2.ass",
+    "ass": "./runs/soulx-flashface\\tiktok-caption-package-20260617\\captions\\soulx_flashface_TT_activeword_contextclean_nfa_v2.ass",
     "groups": 295,
     "events": 1580,
     "max_lines": 2,

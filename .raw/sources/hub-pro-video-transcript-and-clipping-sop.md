@@ -57,12 +57,12 @@ Interpretation:
 
 | Asset | Path |
 |---|---|
-| Legends Skool CLI repo | `E:\legends-skool-cli` |
-| Live-session videos | `E:\legends-skool-cli\.legends-skool-cli\videos\downloads` |
-| Live-session transcripts | `E:\legends-skool-cli\.legends-skool-cli\transcripts` |
-| Live-session Parakeet release transcripts | `E:\legends-skool-cli\.legends-skool-cli\transcripts-parakeet-live` |
-| Live-session diarization | `E:\legends-skool-cli\.legends-skool-cli\diarization\archive-full` |
-| Live-session clips | `E:\legends-skool-cli\.legends-skool-cli\clips` |
+| Legends Skool CLI repo | `<workspace>\legends-skool-cli` |
+| Live-session videos | `<workspace>\legends-skool-cli\.legends-skool-cli\videos\downloads` |
+| Live-session transcripts | `<workspace>\legends-skool-cli\.legends-skool-cli\transcripts` |
+| Live-session Parakeet release transcripts | `<workspace>\legends-skool-cli\.legends-skool-cli\transcripts-parakeet-live` |
+| Live-session diarization | `<workspace>\legends-skool-cli\.legends-skool-cli\diarization\archive-full` |
+| Live-session clips | `<workspace>\legends-skool-cli\.legends-skool-cli\clips` |
 | Member-facing transcript package | [[assets/transcripts/live-sessions/index|Live Session Transcript Markdown Package]] |
 | Current replay index | [[Current Live Sessions Replay Index]] |
 | Replay/media/transcript crosswalk | [[Video Quest Replay Media Crosswalk]] |
@@ -74,7 +74,7 @@ Interpretation:
 
 ### Live-Session Recordings
 
-Use Legends Skool CLI from `E:\legends-skool-cli`.
+Use Legends Skool CLI from `<workspace>\legends-skool-cli`.
 
 Transcription:
 
@@ -83,7 +83,7 @@ Transcription:
 - Auto behavior: prefers NVIDIA Parakeet through NeMo when available, then falls back to faster-whisper.
 - Default models in the CLI: `nvidia/parakeet-tdt-0.6b-v3` for Parakeet, `large-v3` for faster-whisper.
 - Required output set for each replay: `.json`, `.txt`, `.srt`, `.vtt`, `.words.json`.
-- Current release package source: WSL NVIDIA NeMo Parakeet `nvidia/parakeet-tdt-0.6b-v3`, chunked at 900 seconds with 2 seconds of overlap, written to `E:\legends-skool-cli\.legends-skool-cli\transcripts-parakeet-live`.
+- Current release package source: WSL NVIDIA NeMo Parakeet `nvidia/parakeet-tdt-0.6b-v3`, chunked at 900 seconds with 2 seconds of overlap, written to `<workspace>\legends-skool-cli\.legends-skool-cli\transcripts-parakeet-live`.
 - Windows default Python currently only exposes faster-whisper. If Parakeet quality is required, use the WSL `/home/you/.venvs/legends-speech/bin/python` path or fold the temporary batch helper into the CLI before rerunning.
 
 Diarization:
@@ -97,7 +97,7 @@ Diarization:
 Core commands:
 
 ```powershell
-Set-Location -LiteralPath "E:\legends-skool-cli"
+Set-Location -LiteralPath "<workspace>\legends-skool-cli"
 
 pnpm dev -- transcripts:transcribe `
   --file ".legends-skool-cli/videos/downloads/<session>.mp4" `
@@ -123,7 +123,7 @@ Canonical channel control page: [[AgriciDaniel YouTube Channel Archive]].
 Canonical Slayer manifest:
 
 ```text
-E:\legends-yt-dlp-slayer\batches\20260608-001248-agricidaniel-youtube-all-119-20260608\manifest.json
+<workspace>\legends-yt-dlp\batches\20260608-001248-agricidaniel-youtube-all-119-20260608\manifest.json
 ```
 
 Current channel transcript/search state:
@@ -137,8 +137,8 @@ Current channel transcript/search state:
 Exact phrase search:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "E:\legends-yt-dlp-slayer\scripts\slayer.ps1" intelligence search `
-  "E:\legends-yt-dlp-slayer\batches\20260608-001248-agricidaniel-youtube-all-119-20260608\manifest.json" `
+powershell -ExecutionPolicy Bypass -File "<workspace>\legends-yt-dlp\scripts\slayer.ps1" intelligence search `
+  "<workspace>\legends-yt-dlp\batches\20260608-001248-agricidaniel-youtube-all-119-20260608\manifest.json" `
   "best practices" `
   --limit 25 `
   --json
@@ -147,8 +147,8 @@ powershell -ExecutionPolicy Bypass -File "E:\legends-yt-dlp-slayer\scripts\slaye
 Clip planning:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "E:\legends-yt-dlp-slayer\scripts\slayer.ps1" intelligence clips plan `
-  "E:\legends-yt-dlp-slayer\batches\20260608-001248-agricidaniel-youtube-all-119-20260608\manifest.json" `
+powershell -ExecutionPolicy Bypass -File "<workspace>\legends-yt-dlp\scripts\slayer.ps1" intelligence clips plan `
+  "<workspace>\legends-yt-dlp\batches\20260608-001248-agricidaniel-youtube-all-119-20260608\manifest.json" `
   --query "best practices" `
   --pad-before 0.15 `
   --pad-after 0.45 `
@@ -160,9 +160,9 @@ powershell -ExecutionPolicy Bypass -File "E:\legends-yt-dlp-slayer\scripts\slaye
 Run this before claiming live-session transcript coverage:
 
 ```powershell
-$videoDir = "E:\legends-skool-cli\.legends-skool-cli\videos\downloads"
-$transDir = "E:\legends-skool-cli\.legends-skool-cli\transcripts"
-$diaDir = "E:\legends-skool-cli\.legends-skool-cli\diarization\archive-full"
+$videoDir = "<workspace>\legends-skool-cli\.legends-skool-cli\videos\downloads"
+$transDir = "<workspace>\legends-skool-cli\.legends-skool-cli\transcripts"
+$diaDir = "<workspace>\legends-skool-cli\.legends-skool-cli\diarization\archive-full"
 
 $videos = @(Get-ChildItem -LiteralPath $videoDir -Filter "*.mp4" -File)
 $rows = foreach ($v in $videos) {
@@ -198,7 +198,7 @@ When asked to release transcripts for the live-session archive:
 2. Run the coverage check above.
 3. Compare against [[Current Live Sessions Replay Index]] and [[Video Quest Replay Media Crosswalk]].
 4. Resolve or disclose [[Live Session - 2025-11-04 AI Masterclass AI Strategy]] if the target is every canonical classroom lesson.
-5. Prefer the Parakeet release transcript set under `E:\legends-skool-cli\.legends-skool-cli\transcripts-parakeet-live` when it is complete.
+5. Prefer the Parakeet release transcript set under `<workspace>\legends-skool-cli\.legends-skool-cli\transcripts-parakeet-live` when it is complete.
 6. Generate public-facing transcript files from `.txt`, `.vtt`, or segment JSON, not raw JSON dumps.
 7. Include replay title, source lesson, transcript generation date, timecode policy, and an "AI-generated transcript, verify before quoting" note.
 8. Use readable timecode anchors, not every caption line. The current package uses two-minute anchors.
@@ -232,8 +232,8 @@ Current staged package:
 - For final Shorts exports, do not use video stream-copy for arbitrary timeline cuts unless stream start times are verified. AV1/H.264/HEVC copy cuts can preserve pre-roll packets or edit-list offsets, creating silent/random lead-in before the intended clip.
 - After every generated clip, run `ffprobe` on stream `start_time` for video and audio. Both should start at `0.000000` or within a tiny encoder priming tolerance; any visible/audio gap is a reject.
 - For captioned final clips from a newly exported or time-remapped raw file, do not mathematically retime old transcript timestamps unless the new media timeline has been proven with a phrase check. Treat old timestamps as editorial candidates only. Extract or transcribe the exact rendered clip audio, build word-level captions from that same zero-based clip clock, then render the video from the same start/duration.
-- Current Braincraft Shorts source of truth: raw video `D:\Dbraincraft shorts raw v6 60fps no music.mp4`; active word timestamps `D:\braincraft_v6_only_production_20260609\transcript\braincraft_v6_full_parakeet.words.json`. Any other Braincraft transcript, manifest, render folder, or timestamp list is stale unless regenerated from this v6 source and manifest-proven.
-- Current verified Braincraft v6 final batch: `D:\braincraft_v6_only_production_20260609\final_av1_music_chronological`, manifest `braincraft_v6_final_music_manifest.json`. The 2026-06-09 verification pass confirmed 9 chronological AV1 clips, 9 ASS sidecars, source video/source words both v6-only, `2160x3840`, `30/1` fps, AV1 video, AAC 48 kHz audio, randomized `-30 dB` music-bed offsets, and no stale v4/v5 production references in the final output folder.
+- Current Braincraft Shorts source of truth: raw video `<production-root>\braincraft shorts raw v6 60fps no music.mp4`; active word timestamps `<production-root>\braincraft_v6_only_production_20260609\transcript\braincraft_v6_full_parakeet.words.json`. Any other Braincraft transcript, manifest, render folder, or timestamp list is stale unless regenerated from this v6 source and manifest-proven.
+- Current verified Braincraft v6 final batch: `<production-root>\braincraft_v6_only_production_20260609\final_av1_music_chronological`, manifest `braincraft_v6_final_music_manifest.json`. The 2026-06-09 verification pass confirmed 9 chronological AV1 clips, 9 ASS sidecars, source video/source words both v6-only, `2160x3840`, `30/1` fps, AV1 video, AAC 48 kHz audio, randomized `-30 dB` music-bed offsets, and no stale v4/v5 production references in the final output folder.
 - Current Braincraft boundary-QA extension: NVIDIA NeMo Forced Aligner (NFA) is now the preferred final in/out alignment pass before render. Start from editorial candidate windows, export padded WAV chunks, run NFA to generate word CTM files, then use `scripts\refine_braincraft_v6_nfa_boundaries.py` to snap candidate starts/ends around the aligned first and final words. Official NFA reference: [NVIDIA NeMo Forced Aligner](https://docs.nvidia.com/nemo-framework/user-guide/latest/nemotoolkit/tools/nemo_forced_aligner.html).
 - Before final Braincraft caption export, run a caption-gap audit on the generated ASS sidecar. Any caption event gap over normal pause length inside a retained speaking section must be checked against the source audio. If the audio has speech but the word-level transcript has no words, do not ship a blank-caption span; retranscribe or manually patch that exact source timestamp range and record the correction. The 2026-06-09 clip 5 failure was a Parakeet word-file hole around `1749.6s` to `1759.5s`, fixed by a source-v6-only manual insertion for `CLAUDE SEO`, `RANKENSTEIN.PRO`, and the following website-visual phrase.
 - Current Opus Clip benchmark: [[Braincraft Opus Clip Benchmark 2026-06-09]]. Treat Opus-like services as recall benchmarks only: they can reveal candidate regions, but their scores, captions, title cards, and exported files are not production truth.
@@ -303,11 +303,11 @@ NFA boundary pass pattern before final render:
 ```powershell
 python .\scripts\run_braincraft_v6_nfa_alignment.py `
   --candidate-json .\scripts\braincraft_v6_nfa_v2_candidates.json `
-  --output-dir "D:\braincraft_v6_only_production_20260609\nfa_v2_20260612" `
+  --output-dir "<production-root>\braincraft_v6_only_production_20260609\nfa_v2_20260612" `
   --clean-nfa-output --run
 
 python .\scripts\refine_braincraft_v6_nfa_boundaries.py `
-  --nfa-dir "D:\braincraft_v6_only_production_20260609\nfa_v2_20260612" `
+  --nfa-dir "<production-root>\braincraft_v6_only_production_20260609\nfa_v2_20260612" `
   --out-json .\scripts\braincraft_v6_nfa_v2_refined_candidates.json `
   --comparison-json .\scripts\braincraft_v6_nfa_v2_comparison.json
 ```

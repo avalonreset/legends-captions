@@ -10,7 +10,7 @@ tags:
 
 # Hot
 
-Legends Captions is being split out as its own project at `E:\legends-captions`.
+Legends Captions is being split out as its own project at `<legends-captions>`.
 
 Current rule that should affect the next run: treat user caption fixes as policy candidates. Every repeated or obvious fix should become one of: glossary rule, contextual phrase repair, timing/grouping rule, QA checklist item, or human-review exception.
 
