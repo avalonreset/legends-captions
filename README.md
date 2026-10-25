@@ -111,10 +111,10 @@ wiki/       product brain for policies, playbooks, agents, and QA
 This module corrects, times, and renders captions. It does not record audio
 or run ASR itself. Get transcripts from the Legends module that fits:
 
-- `legends-ambient-intelligence` for recorded audio: voice memos, recorder
+- [`legends-ambient-intelligence`](https://github.com/avalonreset/legends-ambient-intelligence) for recorded audio: voice memos, recorder
   ingest, and offline Whisper or Parakeet transcription.
 - `hyperyap` for live dictated text.
-- `legends-yt-dlp` subtitle fetch for pulled video.
+- [`legends-yt-dlp`](https://github.com/avalonreset/legends-yt-dlp) subtitle fetch for pulled video.
 
 Then bring the text here for correction policy, forced-alignment timing,
 active-word rendering, and proof evidence.
