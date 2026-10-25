@@ -143,6 +143,14 @@ faster-whisper (MIT), NVIDIA NeMo with Parakeet weights (Apache-2.0
 code, CC-BY-4.0 weights), yt-dlp (Unlicense), and Montserrat (SIL Open
 Font License, referenced by name in the default ASS style only).
 
+## FAQ
+
+**Does `legends-captions` bundle FFmpeg or ASR model weights?**
+No. It orchestrates external tools (`ffmpeg`, `faster-whisper`, or NVIDIA NeMo Parakeet) on your machine and renders deterministic `.ass`, `.srt`, and `.vtt` subtitle artifacts.
+
+**Can I generate subtitles without burning them into a new video file?**
+Yes. You can generate word-timed `.srt`, `.vtt`, and styled `.ass` files standalone, and run the FFmpeg burn-in step only when you want a rendered MP4 preview or final export.
+
 ## Status
 
 Current release: `v0.1.0`.
