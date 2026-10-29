@@ -4,7 +4,7 @@
 [![release](https://img.shields.io/github/v/release/avalonreset/legends-captions?label=release&style=flat-square&labelColor=000000&color=ff0000)](https://github.com/avalonreset/legends-captions/releases/latest)
 [![checks](https://img.shields.io/github/actions/workflow/status/avalonreset/legends-captions/tests.yml?branch=main&label=checks&style=flat-square&labelColor=000000)](https://github.com/avalonreset/legends-captions/actions/workflows/tests.yml)
 [![license](https://img.shields.io/github/license/avalonreset/legends-captions?label=license&style=flat-square&labelColor=000000&color=666666)](LICENSE)
-![Python](https://img.shields.io/badge/python-3.10+-3776AB)
+![Python](https://img.shields.io/badge/python-3.11+-3776AB)
 ![Agents](https://img.shields.io/badge/agents-Codex%20%7C%20Claude%20%7C%20Gemini-111827)
 
 Video captions are easy to generate and painful to trust. Legends Captions is an agentic video caption system that treats transcript correction,
@@ -69,7 +69,7 @@ Run tests:
 powershell -ExecutionPolicy Bypass -File .\scripts\run-tests.ps1
 ```
 
-Or on any platform with Python 3.10+:
+Or on any platform with Python 3.11+:
 
 ```sh
 python -m unittest discover -s tests
@@ -153,7 +153,7 @@ Yes. You can generate word-timed `.srt`, `.vtt`, and styled `.ass` files standal
 
 ## Status
 
-Current release: `v0.1.0`.
+Current release: `v0.1.1`.
 
 License: MIT. See
 [LICENSE](LICENSE).

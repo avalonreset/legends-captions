@@ -2,7 +2,7 @@
 
 ## Development setup
 
-Requires Python 3.10+ and Git. No third-party packages are needed for the
+Requires Python 3.11+ and Git. No third-party packages are needed for the
 core library and tests.
 
 ```sh
