@@ -61,15 +61,10 @@ Try the policy engine:
 .\.venv\Scripts\legends-captions.exe normalize --uppercase "low raw teaches the model"
 .\.venv\Scripts\legends-captions.exe normalize --uppercase "it may not be as exacting 2.0,"
 .\.venv\Scripts\legends-captions.exe normalize --manifest "L O R A."
+.\.venv\Scripts\legends-captions.exe render-ass --uppercase "low raw teaches the model"
 ```
 
-Run tests:
-
-```powershell
-powershell -ExecutionPolicy Bypass -File .\scripts\run-tests.ps1
-```
-
-Or on any platform with Python 3.11+:
+Run tests on any platform with Python 3.11+:
 
 ```sh
 python -m unittest discover -s tests
@@ -153,7 +148,7 @@ Yes. You can generate word-timed `.srt`, `.vtt`, and styled `.ass` files standal
 
 ## Status
 
-Current release: `v0.1.1`.
+Current release: `v0.1.2`.
 
 License: MIT. See
 [LICENSE](LICENSE).

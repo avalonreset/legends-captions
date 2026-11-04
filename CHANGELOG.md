@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.2 - 2026-11-04
+
+- Add `legends-captions render-ass` CLI subcommand to build deterministic active-word or line `.ass` subtitle documents and correction manifests directly from inline text or timed JSON word/segment inputs.
+- Standardize test execution and transcript search documentation across `README.md`, `CONTRIBUTING.md`, `docs/install/agent-install-guide.md`, and `.raw/sources/` on direct cross-platform Python CLI invocations without legacy PowerShell test wrapper scripts.
+
 ## v0.1.1 - 2026-10-29
 
 - Raise minimum supported Python runtime to Python 3.11 (`requires-python = ">=3.11"`) across package metadata, documentation, and multi-OS CI.

@@ -20,17 +20,28 @@ python -m pip install -e .
 python -m legends_captions.cli doctor
 ```
 
+## Deterministic CLI commands
+
+Use the built-in Python CLI subcommands directly instead of improvising shell pipelines:
+
+```sh
+legends-captions doctor
+legends-captions policy-report
+legends-captions normalize --uppercase "low raw teaches the model"
+legends-captions normalize --manifest "L O R A."
+legends-captions render-ass --uppercase "low raw teaches the model"
+legends-captions render-ass --input transcript.words.json --output captions.ass --manifest-output correction_manifest.json --uppercase
+```
+
 Recommended prompt:
 
 ```text
-Use Legends Captions to inspect this video, build accurate active-word
-captions, apply contextual correction policy, render proof frames, and give me
-the final caption package with manifests.
+Use Legends Captions to inspect this transcript, apply contextual correction
+policy, build active-word ASS captions and correction manifests with
+legends-captions render-ass, and review any flagged terms before final render.
 ```
 
-Start with the doctor command, then build a caption QA plan before rendering.
-Review caption text, identify likely ASR errors, and flag proof-frame checks
-before final render.
+Start with the `doctor` command, inspect active rules with `policy-report`, normalize or generate `.ass` subtitles and manifests with `normalize` and `render-ass`, and review any flagged ASR errors before final render.
 
 ## Full Runtime Notes
 

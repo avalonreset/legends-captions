@@ -137,7 +137,7 @@ Current channel transcript/search state:
 Exact phrase search:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "<workspace>\legends-yt-dlp\scripts\slayer.ps1" intelligence search `
+legends-yt-dlp intelligence search `
   "<workspace>\legends-yt-dlp\batches\20260608-001248-agricidaniel-youtube-all-119-20260608\manifest.json" `
   "best practices" `
   --limit 25 `
@@ -147,7 +147,7 @@ powershell -ExecutionPolicy Bypass -File "<workspace>\legends-yt-dlp\scripts\sla
 Clip planning:
 
 ```powershell
-powershell -ExecutionPolicy Bypass -File "<workspace>\legends-yt-dlp\scripts\slayer.ps1" intelligence clips plan `
+legends-yt-dlp intelligence clips plan `
   "<workspace>\legends-yt-dlp\batches\20260608-001248-agricidaniel-youtube-all-119-20260608\manifest.json" `
   --query "best practices" `
   --pad-before 0.15 `

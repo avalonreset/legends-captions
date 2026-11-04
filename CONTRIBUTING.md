@@ -12,8 +12,7 @@ python -m venv .venv
 .venv/bin/python -m pip install -e .
 ```
 
-On Windows PowerShell, run `scripts\run-tests.ps1` instead of the commands
-below.
+On Windows PowerShell, use `.venv\Scripts\python.exe -m pip install -e .` and run `python -m unittest discover -s tests`.
 
 ## Rules
 
