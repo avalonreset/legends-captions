@@ -1,5 +1,10 @@
 # Changelog
 
+## v0.1.3 - 2026-11-05
+
+- Add `docs/AGENT-RECIPE.md` with full 1:1 CLI command parity (`doctor`, `policy-report`, `normalize`, `render-ass`) and explicit EDR and Security Guardrails.
+- Add `THIRD_PARTY_NOTICES.md`, `assets/preview.png` (`1024x256`), `assets/manifest.json`, and `scripts/check_release.py` Gold Standard offline release gate.
+
 ## v0.1.2 - 2026-11-04
 
 - Add `legends-captions render-ass` CLI subcommand to build deterministic active-word or line `.ass` subtitle documents and correction manifests directly from inline text or timed JSON word/segment inputs.

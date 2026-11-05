@@ -116,6 +116,7 @@ active-word rendering, and proof evidence.
 
 ## Documentation
 
+- [Agent recipe](docs/AGENT-RECIPE.md)
 - [Architecture](docs/architecture.md)
 - [Agent compatibility](docs/agent-compatibility.md)
 - [Install guide](docs/install/agent-install-guide.md)
@@ -148,7 +149,7 @@ Yes. You can generate word-timed `.srt`, `.vtt`, and styled `.ass` files standal
 
 ## Status
 
-Current release: `v0.1.2`.
+Current release: `v0.1.3`.
 
 License: MIT. See
 [LICENSE](LICENSE).

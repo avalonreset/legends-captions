@@ -1,41 +1,32 @@
 # Legends Captions Agent Instructions
 
-This project is the standalone caption system for Avalon Reset and Hub Pro video production. Work from the project brain first, then the code.
+Start with [docs/AGENT-RECIPE.md](docs/AGENT-RECIPE.md), [wiki/hot.md](wiki/hot.md), and [wiki/index.md](wiki/index.md).
 
 ## Boot Sequence
 
-1. Read `wiki/hot.md`.
-2. Read `wiki/index.md`.
-3. Read the active policy page for the task, usually `wiki/policies/Caption Intelligence Policy.md`.
+1. Read [docs/AGENT-RECIPE.md](docs/AGENT-RECIPE.md) for the CLI command table and guardrails.
+2. Read [wiki/hot.md](wiki/hot.md) and [wiki/index.md](wiki/index.md).
+3. Read the active policy page for the task, usually [wiki/policies/Caption Intelligence Policy.md](wiki/policies/Caption%20Intelligence%20Policy.md).
 4. Check `configs/default_vertical_4k60.json` before changing caption style defaults.
 5. Preserve anything under `.raw/`; treat it as source evidence.
 
 ## Operating Standard
 
+- **Single Router Skill**: Discovery belongs to `skills/cto-legends/SKILL.md`. Do not add secondary skills under `skills/`.
 - Prefer real artifacts over memory: manifests, word JSON, CTM files, ASS files, proof frames, and ffprobe output.
-- Parakeet is the preferred ASR text-quality layer.
-- NeMo Forced Aligner is the preferred final word-boundary layer.
-- Do not rebuild captions from stale timelines.
-- Do not silently flatten spoken acronyms if per-letter highlight timing is available.
-- Fix obvious ASR errors using context, but record the correction.
-- If the audio is genuinely ambiguous, flag it for review instead of inventing certainty.
+- Parakeet is the preferred ASR text-quality layer; NeMo Forced Aligner is the preferred final word-boundary layer.
+- Do not rebuild captions from stale timelines or silently flatten spoken acronyms if per-letter highlight timing is available.
+- Fix obvious ASR errors using context, record the correction in a manifest, and add or update a test for every recurring caption correction.
 
-## Code Changes
+## EDR and Security Guardrails
 
-- Keep policy changes small and regression-tested.
-- Add or update a test for every recurring caption correction.
-- Keep renderer changes separate from policy changes when practical.
-- Use manifests to explain any text correction, virtual token, grouping override, or timing fallback.
+1. **No Hidden Spawns or Bypass Wrappers**: Never spawn background shells, hidden console windows, or execution-policy bypass shell wrappers, and never add `.ps1`, `.bat`, or `.cmd` wrapper scripts.
+2. **No Browser Profile or Credential Store Probing**: Never read local browser profile databases, DPAPI stores, or third-party credential stores outside the project workspace.
+3. **Zero Secret Exposure**: Never print or log secret values or tokens to stdout, logs, or Markdown receipts.
+4. **Controlled File Writes**: Keep `render-ass` outputs limited to explicit `--output` and `--manifest-output` paths inside the workspace.
 
 ## QA Before Done
 
-- Run the policy tests.
+- Run `python scripts/check_release.py`.
+- Run `python -m unittest discover -s tests -v`.
 - Run `python -m legends_captions.cli doctor`.
-- For real renders, verify ffprobe output and proof frames from the final file, not just ASS previews.
-
-## Release Packaging
-
-- Keep `README.md`, `CHANGELOG.md`, `docs/release-checklist.md`, `skills/cto-legends/SKILL.md`, and `AGENTS.md` aligned.
-- Skool release drafts live under `release/skool/`; Hub Pro mirror drafts may live under `<workspace>\ai-marketing-hub-pro\wiki\drafts\skool`.
-- Release art lives under `release/art/`; `assets/banner.webp` is the current README banner.
-- Do not publish to Skool until repo and release URLs are real and the user approves the copy/art.

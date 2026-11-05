@@ -1,0 +1,31 @@
+{
+  "product": "legends-captions",
+  "banner_template": "legends-type-v1",
+  "social_template": "legends-social-v1",
+  "subtitle": "agent-driven caption deployment with contextual correction and timing policy",
+  "font": "Legends Regular",
+  "font_sha256": "3769f0f76477a7d9e2e6cb40422dedacb56c9ab1a6f7beee89b2b9ba6b8091ee",
+  "font_redistributed": false,
+  "files": [
+    {
+      "name": "banner.png",
+      "bytes": 76953,
+      "sha256": "09d352cfe10da64fe3ab7c4066dfcb0ecd9947e52c034d3b4a18d2b4eae97d7f"
+    },
+    {
+      "name": "banner.webp",
+      "bytes": 65116,
+      "sha256": "2b6afe29631b5be2440c8d1a4131693cb7eedc10765be2eee14e6c83ac289239"
+    },
+    {
+      "name": "preview.png",
+      "bytes": 33643,
+      "sha256": "c3f5b40b2563156d7db25ac26826a48f7efc2c71fe698e0a5fed5f76a22f53fa"
+    },
+    {
+      "name": "social-preview.png",
+      "bytes": 21540,
+      "sha256": "55ef4e5f827e602f057a73bab1c99adcd675024f157d3b1e89baa5cb15019ae5"
+    }
+  ]
+}
