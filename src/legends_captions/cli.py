@@ -3,13 +3,26 @@
 from __future__ import annotations
 
 import argparse
+from importlib import resources
 import json
+import math
+import os
 from pathlib import Path
 import shutil
+import stat
 import sys
+import tempfile
 
 from . import __version__
-from .ass_builder import AssEvent, AssStyle, build_ass_document
+from .ass_builder import (
+    MAX_TIMECODE_SECONDS,
+    AssEvent,
+    AssStyle,
+    build_ass_document,
+    escape_ffmpeg_ass_filter,
+    format_ffmpeg_ass_filtergraph,
+    validate_style_identifier,
+)
 from .manifest import build_policy_manifest
 from .policy import (
     PHRASE_RULES,
@@ -20,35 +33,130 @@ from .policy import (
 )
 
 
-PROJECT_ROOT = Path(__file__).resolve().parents[2]
+_CANDIDATE_REPO_ROOT = Path(__file__).resolve().parents[2]
+MAX_CONFIG_BYTES = 1 * 1024 * 1024
+MAX_INPUT_BYTES = 25 * 1024 * 1024
+_MACOS_SYSTEM_SYMLINKS = {Path("/var"), Path("/tmp"), Path("/etc")}
+
+
+def resolve_project_root() -> Path:
+    """Return the source checkout root if running from a repo checkout, else the active working directory."""
+    if (_CANDIDATE_REPO_ROOT / ".legends-module").is_file():
+        return _CANDIDATE_REPO_ROOT
+    return Path.cwd().resolve()
+
+
+PROJECT_ROOT = resolve_project_root()
+
+
+def _reject_nonfinite(token: str) -> None:
+    raise ValueError(f"Non-finite JSON number {token!r} is not allowed.")
+
+
+def _check_parent_symlinks(path: Path) -> None:
+    abs_path = Path(os.path.abspath(str(path)))
+    for parent in abs_path.parents:
+        if parent.is_symlink():
+            if sys.platform == "darwin" and parent in _MACOS_SYSTEM_SYMLINKS:
+                continue
+            raise ValueError(f"Refusing path traversing symlinked directory: {parent}")
+
+
+def _read_safe_json_file(path: Path, *, max_bytes: int, label: str) -> object:
+    if path.is_symlink():
+        raise ValueError(f"Refusing symlink for {label}: {path}")
+    _check_parent_symlinks(path)
+    try:
+        st = path.lstat()
+    except FileNotFoundError:
+        raise
+    if stat.S_ISLNK(st.st_mode) or not stat.S_ISREG(st.st_mode):
+        raise ValueError(f"Refusing non-regular file for {label}: {path}")
+    if st.st_size > max_bytes:
+        raise ValueError(f"{label} exceeds maximum size of {max_bytes} bytes: {path}")
+    raw = path.read_text(encoding="utf-8")
+    return json.loads(raw, parse_constant=_reject_nonfinite)
+
+
+def _write_safe_file(path: Path, content: str, *, overwrite: bool, label: str) -> None:
+    if path.is_symlink():
+        raise ValueError(f"Refusing symlink output path for {label}: {path}")
+    _check_parent_symlinks(path)
+    if path.exists():
+        st = path.lstat()
+        if stat.S_ISLNK(st.st_mode) or not stat.S_ISREG(st.st_mode):
+            raise ValueError(f"Refusing non-regular output target for {label}: {path}")
+        if not overwrite:
+            raise FileExistsError(f"Refusing to overwrite existing {label} without --overwrite: {path}")
+    path.parent.mkdir(parents=True, exist_ok=True)
+    _check_parent_symlinks(path)
+    fd, tmp_name = tempfile.mkstemp(prefix=f".{path.name}.", suffix=".tmp", dir=str(path.parent))
+    tmp_path = Path(tmp_name)
+    try:
+        with os.fdopen(fd, "w", encoding="utf-8", newline="\n") as handle:
+            handle.write(content)
+        if path.is_symlink():
+            raise ValueError(f"Refusing symlink output path for {label}: {path}")
+        os.replace(tmp_path, path)
+    except Exception:
+        with suppress_os_error():
+            tmp_path.unlink(missing_ok=True)
+        raise
+
+
+class suppress_os_error:
+    def __enter__(self) -> None:
+        return None
+
+    def __exit__(self, exc_type: object, exc: object, tb: object) -> bool:
+        return exc_type is not None and issubclass(exc_type, OSError)
 
 
 def default_config_path() -> Path:
     packaged = Path(__file__).resolve().parent / "data" / "default_vertical_4k60.json"
     if packaged.is_file():
         return packaged
-    return PROJECT_ROOT / "configs" / "default_vertical_4k60.json"
+    repo_cfg = resolve_project_root() / "configs" / "default_vertical_4k60.json"
+    return repo_cfg
 
 
-DEFAULT_CONFIG = PROJECT_ROOT / "configs" / "default_vertical_4k60.json"
+DEFAULT_CONFIG = default_config_path()
 
 
 def load_config(path: Path | None = None) -> dict[str, object]:
     if path is not None:
-        return json.loads(path.read_text(encoding="utf-8"))
-    for candidate in (default_config_path(), DEFAULT_CONFIG):
-        if candidate.is_file():
-            return json.loads(candidate.read_text(encoding="utf-8"))
+        payload = _read_safe_json_file(Path(path), max_bytes=MAX_CONFIG_BYTES, label="config file")
+        if not isinstance(payload, dict):
+            raise ValueError("Config file must contain a JSON object.")
+        return payload
+
+    try:
+        resource = resources.files("legends_captions").joinpath("data", "default_vertical_4k60.json")
+        raw = resource.read_text(encoding="utf-8")
+        payload = json.loads(raw, parse_constant=_reject_nonfinite)
+        if isinstance(payload, dict):
+            return payload
+    except Exception:
+        pass
+
+    for candidate in (default_config_path(), _CANDIDATE_REPO_ROOT / "configs" / "default_vertical_4k60.json"):
+        if candidate.is_file() and not candidate.is_symlink():
+            payload = _read_safe_json_file(candidate, max_bytes=MAX_CONFIG_BYTES, label="default config file")
+            if isinstance(payload, dict):
+                return payload
     raise FileNotFoundError("No default caption config found (looked in package data and configs/).")
 
 
 def command_doctor(args: argparse.Namespace) -> int:
     config = load_config(Path(args.config) if args.config else None)
-    raw_sources = sorted((PROJECT_ROOT / ".raw" / "sources").glob("*"))
+    root = resolve_project_root()
+    raw_dir = root / ".raw" / "sources"
+    raw_sources = sorted(raw_dir.glob("*")) if raw_dir.is_dir() and not raw_dir.is_symlink() else []
     report = {
         "project": "Legends Captions",
         "version": __version__,
-        "root": str(PROJECT_ROOT),
+        "root": str(root),
+        "source_checkout": (root / ".legends-module").is_file(),
         "config_profile": config.get("profile"),
         "raw_source_files": len(raw_sources),
         "ffmpeg": shutil.which("ffmpeg"),
@@ -84,6 +192,29 @@ def command_normalize(args: argparse.Namespace) -> int:
     return 0
 
 
+def command_ffmpeg_filter(args: argparse.Namespace) -> int:
+    filter_complex = format_ffmpeg_ass_filtergraph(args.ass)
+    if args.json:
+        payload = {
+            "ass_path": str(args.ass),
+            "escaped_filename": escape_ffmpeg_ass_filter(args.ass),
+            "filter_complex": filter_complex,
+        }
+        print(json.dumps(payload, indent=2))
+    else:
+        print(filter_complex)
+    return 0
+
+
+def _validate_timestamp(value: object, field_name: str) -> float:
+    if isinstance(value, bool) or not isinstance(value, (int, float, str)):
+        raise ValueError(f"Invalid {field_name} {value!r}: expected finite number.")
+    parsed = float(value)
+    if not math.isfinite(parsed) or parsed < 0.0 or parsed > MAX_TIMECODE_SECONDS:
+        raise ValueError(f"Invalid {field_name} {value!r}: expected 0.0 <= {field_name} <= {MAX_TIMECODE_SECONDS}.")
+    return parsed
+
+
 def _tokens_from_json_payload(payload: object, default_start: float) -> list[CaptionToken]:
     items: list[object]
     if isinstance(payload, list):
@@ -100,7 +231,7 @@ def _tokens_from_json_payload(payload: object, default_start: float) -> list[Cap
         raise ValueError("Input JSON must be a list of token/segment objects or a dict containing one.")
 
     tokens: list[CaptionToken] = []
-    cursor = default_start
+    cursor = _validate_timestamp(default_start, "start")
     for item in items:
         if isinstance(item, str):
             words = item.split()
@@ -114,10 +245,16 @@ def _tokens_from_json_payload(payload: object, default_start: float) -> list[Cap
         if not raw_text:
             continue
         words = raw_text.split()
-        start_val = float(item["start"]) if item.get("start") is not None else cursor
-        end_val = float(item["end"]) if item.get("end") is not None else start_val + max(0.35, 0.35 * len(words))
-        if end_val <= start_val:
-            end_val = start_val + max(0.35, 0.35 * len(words))
+        start_val = _validate_timestamp(item["start"], "start") if item.get("start") is not None else cursor
+        end_val = (
+            _validate_timestamp(item["end"], "end")
+            if item.get("end") is not None
+            else start_val + max(0.35, 0.35 * len(words))
+        )
+        if end_val < start_val:
+            raise ValueError(f"Invalid token timing: end ({end_val}) precedes start ({start_val}).")
+        if end_val == start_val:
+            end_val = min(MAX_TIMECODE_SECONDS, start_val + max(0.35, 0.35 * len(words)))
         step = (end_val - start_val) / len(words)
         for idx, word in enumerate(words):
             w_start = start_val + idx * step
@@ -128,19 +265,25 @@ def _tokens_from_json_payload(payload: object, default_start: float) -> list[Cap
 
 
 def _resolve_render_policy(args: argparse.Namespace) -> PolicyResult:
+    start = _validate_timestamp(args.start, "--start")
+    if args.duration is not None:
+        if not math.isfinite(float(args.duration)) or float(args.duration) <= 0.0 or float(args.duration) > MAX_TIMECODE_SECONDS:
+            raise ValueError(f"Invalid --duration {args.duration!r}: expected positive finite number <= {MAX_TIMECODE_SECONDS}.")
     if args.input:
         input_path = Path(args.input)
-        payload = json.loads(input_path.read_text(encoding="utf-8"))
-        tokens = _tokens_from_json_payload(payload, default_start=args.start)
+        payload = _read_safe_json_file(input_path, max_bytes=MAX_INPUT_BYTES, label="input JSON file")
+        tokens = _tokens_from_json_payload(payload, default_start=start)
     elif args.text:
         words = " ".join(args.text).split()
-        duration = args.duration if args.duration is not None else max(1.0, len(words) * 0.35)
+        duration = float(args.duration) if args.duration is not None else max(1.0, len(words) * 0.35)
+        if start + duration > MAX_TIMECODE_SECONDS:
+            raise ValueError(f"Start + duration exceeds maximum {MAX_TIMECODE_SECONDS} seconds.")
         step = duration / max(1, len(words))
         tokens = [
             CaptionToken(
                 text=word,
-                start=args.start + idx * step,
-                end=args.start + (idx + 1) * step,
+                start=start + idx * step,
+                end=start + (idx + 1) * step,
                 source_text=word,
             )
             for idx, word in enumerate(words)
@@ -151,9 +294,17 @@ def _resolve_render_policy(args: argparse.Namespace) -> PolicyResult:
 
 
 def command_render_ass(args: argparse.Namespace) -> int:
+    validate_style_identifier(args.font, "--font")
+    if not (16 <= args.width <= 16384):
+        raise ValueError(f"Invalid --width {args.width!r}: expected integer in 16..16384.")
+    if not (16 <= args.height <= 16384):
+        raise ValueError(f"Invalid --height {args.height!r}: expected integer in 16..16384.")
+    if not (1 <= args.font_size <= 1000):
+        raise ValueError(f"Invalid --font-size {args.font_size!r}: expected integer in 1..1000.")
+
     result = _resolve_render_policy(args)
     events: list[AssEvent] = []
-    cursor = args.start
+    cursor = _validate_timestamp(args.start, "--start")
     if args.mode == "line":
         if result.tokens:
             first_start = result.tokens[0].start if result.tokens[0].start is not None else cursor
@@ -176,16 +327,37 @@ def command_render_ass(args: argparse.Namespace) -> int:
     style = AssStyle(font=args.font, font_size=args.font_size)
     ass_doc = build_ass_document(events, width=args.width, height=args.height, style=style)
 
+    overwrite = bool(getattr(args, "overwrite", False))
+    if args.output:
+        output_path = Path(args.output)
+        if output_path.is_symlink():
+            raise ValueError(f"Refusing symlink output path for --output: {output_path}")
+        _check_parent_symlinks(output_path)
+        if output_path.exists() and not overwrite:
+            raise FileExistsError(f"Refusing to overwrite existing --output file without --overwrite: {output_path}")
     if args.manifest_output:
         manifest_path = Path(args.manifest_output)
-        manifest_path.parent.mkdir(parents=True, exist_ok=True)
+        if manifest_path.is_symlink():
+            raise ValueError(f"Refusing symlink output path for --manifest-output: {manifest_path}")
+        _check_parent_symlinks(manifest_path)
+        if manifest_path.exists() and not overwrite:
+            raise FileExistsError(
+                f"Refusing to overwrite existing --manifest-output file without --overwrite: {manifest_path}"
+            )
+
+    if args.manifest_output:
+        manifest_path = Path(args.manifest_output)
         manifest = build_policy_manifest(result, source=str(args.input) if args.input else "cli")
-        manifest_path.write_text(json.dumps(manifest, indent=2) + "\n", encoding="utf-8")
+        _write_safe_file(
+            manifest_path,
+            json.dumps(manifest, indent=2) + "\n",
+            overwrite=overwrite,
+            label="--manifest-output file",
+        )
 
     if args.output:
         output_path = Path(args.output)
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        output_path.write_text(ass_doc, encoding="utf-8")
+        _write_safe_file(output_path, ass_doc, overwrite=overwrite, label="--output file")
         receipt = {
             "status": "ok",
             "ass_path": str(output_path),
@@ -226,6 +398,11 @@ def build_parser() -> argparse.ArgumentParser:
     render_ass.add_argument("--input", help="Path to JSON file containing timed words, tokens, or segments.")
     render_ass.add_argument("--output", help="Optional output path for the generated .ass file.")
     render_ass.add_argument("--manifest-output", help="Optional output path for the policy correction manifest JSON.")
+    render_ass.add_argument(
+        "--overwrite",
+        action="store_true",
+        help="Allow overwriting existing --output or --manifest-output files.",
+    )
     render_ass.add_argument("--mode", choices=("word", "line"), default="word", help="Emit one ASS Dialogue event per word or per line.")
     render_ass.add_argument("--start", type=float, default=0.0, help="Starting timestamp in seconds for untimed text.")
     render_ass.add_argument("--duration", type=float, default=None, help="Total duration in seconds for untimed text.")
@@ -236,13 +413,25 @@ def build_parser() -> argparse.ArgumentParser:
     render_ass.add_argument("--uppercase", action="store_true", help="Render caption display text in uppercase.")
     render_ass.set_defaults(func=command_render_ass)
 
+    ffmpeg_filter = subparsers.add_parser(
+        "ffmpeg-filter",
+        help="Format a cross-platform escaped FFmpeg libavfilter ass=filename=... filtergraph string.",
+    )
+    ffmpeg_filter.add_argument("--ass", required=True, help="Path to the .ass subtitle file.")
+    ffmpeg_filter.add_argument("--json", action="store_true", help="Emit JSON output instead of plain filter string.")
+    ffmpeg_filter.set_defaults(func=command_ffmpeg_filter)
+
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = build_parser()
     args = parser.parse_args(argv)
-    return int(args.func(args))
+    try:
+        return int(args.func(args))
+    except (ValueError, FileNotFoundError, FileExistsError) as exc:
+        print(f"error: {exc}", file=sys.stderr)
+        return 2
 
 
 if __name__ == "__main__":

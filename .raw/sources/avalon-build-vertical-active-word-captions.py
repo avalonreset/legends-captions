@@ -588,6 +588,11 @@ def bubble_event_text(line: dict) -> str:
     )
 
 
+def escape_ass(text: str) -> str:
+    cleaned = str(text).replace("\r\n", "\n").replace("\r", "\n")
+    return cleaned.replace("\\", "\\\\").replace("{", "\\{").replace("}", "\\}").replace("\n", "\\N")
+
+
 def line_event_text(group: list[dict], line: dict, active_idx: int) -> str:
     pieces = [
         rf"{{\an5\pos({CAPTION_X},{line['text_center_y']})\fn{FONT_NAME}\fs{FONT_SIZE}"
@@ -595,7 +600,7 @@ def line_event_text(group: list[dict], line: dict, active_idx: int) -> str:
     ]
     tokens = []
     for idx in line["indices"]:
-        token = group[idx]["text"]
+        token = escape_ass(group[idx]["text"])
         if idx == active_idx:
             token = rf"{{\c{ACTIVE_COLOR}}}" + token + rf"{{\c{WHITE_COLOR}}}"
         tokens.append(token)

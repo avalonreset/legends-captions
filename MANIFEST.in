@@ -1,0 +1,26 @@
+include LICENSE
+include NOTICE
+include THIRD_PARTY_NOTICES.md
+include README.md
+include AGENTS.md
+include CHANGELOG.md
+include SECURITY.md
+include SUPPORT.md
+include CONTRIBUTING.md
+include CODE_OF_CONDUCT.md
+include CITATION.cff
+include .env.example
+include .legends-module
+include .legends-router-pin
+recursive-include configs *.json
+recursive-include docs *.md
+recursive-include wiki *.md
+recursive-include skills *.md
+recursive-include assets *.png *.webp *.json
+include scripts/check_release.py
+recursive-include tests *.py
+prune .raw
+prune release
+prune _templates
+prune .obsidian
+global-exclude __pycache__ *.py[cod]

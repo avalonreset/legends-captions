@@ -1,4 +1,8 @@
+from pathlib import Path
+import sys
 import unittest
+
+sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
 from legends_captions.policy import apply_caption_policy, normalize_text
 

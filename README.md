@@ -62,6 +62,7 @@ Try the policy engine:
 .\.venv\Scripts\legends-captions.exe normalize --uppercase "it may not be as exacting 2.0,"
 .\.venv\Scripts\legends-captions.exe normalize --manifest "L O R A."
 .\.venv\Scripts\legends-captions.exe render-ass --uppercase "low raw teaches the model"
+.\.venv\Scripts\legends-captions.exe ffmpeg-filter --ass "C:\work\captions.ass"
 ```
 
 Run tests on any platform with Python 3.11+:
@@ -108,7 +109,7 @@ or run ASR itself. Get transcripts from the Legends module that fits:
 
 - [`legends-ambient-intelligence`](https://github.com/avalonreset/legends-ambient-intelligence) for recorded audio: voice memos, recorder
   ingest, and offline Whisper or Parakeet transcription.
-- `hyperyap` for live dictated text.
+- [`legends-hyperyap`](https://github.com/avalonreset/legends-hyperyap) for live dictated text.
 - [`legends-yt-dlp`](https://github.com/avalonreset/legends-yt-dlp) subtitle fetch for pulled video.
 
 Then bring the text here for correction policy, forced-alignment timing,
@@ -142,14 +143,14 @@ Font License, referenced by name in the default ASS style only).
 ## FAQ
 
 **Does `legends-captions` bundle FFmpeg or ASR model weights?**
-No. It orchestrates external tools (`ffmpeg`, `faster-whisper`, or NVIDIA NeMo Parakeet) on your machine and renders deterministic `.ass`, `.srt`, and `.vtt` subtitle artifacts.
+No. It is a deterministic, zero-dependency caption policy, normalization, and `.ass` subtitle / manifest engine (`doctor`, `policy-report`, `normalize`, `render-ass`, `ffmpeg-filter`) that works alongside external tools (`ffmpeg`, `faster-whisper`, or NVIDIA NeMo Parakeet/NFA) on your machine without bundling model weights or spawning hidden shell wrappers.
 
 **Can I generate subtitles without burning them into a new video file?**
-Yes. You can generate word-timed `.srt`, `.vtt`, and styled `.ass` files standalone, and run the FFmpeg burn-in step only when you want a rendered MP4 preview or final export.
+Yes. `legends-captions render-ass` emits standalone styled `.ass` subtitle documents and JSON policy-correction manifests (`--manifest-output`), and `legends-captions ffmpeg-filter --ass <path>` formats a safely escaped `libavfilter` `ass=filename='...'` filtergraph string for when you choose to run an FFmpeg burn-in pass.
 
 ## Status
 
-Current release: `v0.1.3`.
+Current release: `v0.1.4`.
 
 License: MIT. See
 [LICENSE](LICENSE).

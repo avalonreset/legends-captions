@@ -134,18 +134,19 @@ Before calling a captioned video upload-ready:
 
 ## 4K60 Square HEVC Command Pattern
 
-Use this pattern only after the mock-up is approved:
+Use this pattern only after the mock-up is approved. Always escape colons, backslashes, and quotes in Windows ASS paths with `legends-captions ffmpeg-filter --ass "<captions.ass>"` (for example `C\:\\work\\captions.ass`) so `libavfilter` does not treat `C:` as a filter option delimiter or allow filtergraph injection:
 
 ```powershell
-ffmpeg -y -hide_banner `
-  -i "<source.mp4>" `
-  -filter_complex "[0:v]setpts=PTS-STARTPTS,ass=filename='<captions.ass>'[v]" `
+$assFilter = legends-captions ffmpeg-filter --ass "C:\work\captions.ass"
+ffmpeg -n -hide_banner `
+  -i "C:\work\source.mp4" `
+  -filter_complex $assFilter `
   -map "[v]" -map 0:a:0 `
   -c:v hevc_nvenc -preset p5 -tune hq -rc vbr -cq 18 -b:v 45M -maxrate 80M -bufsize 160M `
   -pix_fmt yuv420p -tag:v hvc1 -fps_mode passthrough `
   -c:a copy `
   -movflags +faststart `
-  "<output.mp4>"
+  -- "C:\work\output.mp4"
 ```
 
 For AV1 source material, use an AV1 encoder and verify the output remains AV1. Preserve source frame rate and resolution in either case.

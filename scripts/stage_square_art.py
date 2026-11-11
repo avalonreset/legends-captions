@@ -1,12 +1,12 @@
 from __future__ import annotations
 
+import argparse
 import json
 import shutil
 from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-GENERATED = Path.home() / ".codex" / "generated_images" / "019ed625-2185-74e3-a5e1-0a92eff0d01c"
 OUT = ROOT / "release" / "art" / "square-meme-options"
 
 CONCEPTS = [
@@ -26,8 +26,15 @@ CONCEPTS = [
 
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Stage square concept art from a local source image directory.")
+    parser.add_argument("--source-dir", type=Path, required=True, help="Directory containing candidate PNG images.")
+    args = parser.parse_args()
+    source_dir = args.source_dir.resolve()
+    if not source_dir.is_dir():
+        raise SystemExit(f"Source directory does not exist: {source_dir}")
+
     OUT.mkdir(parents=True, exist_ok=True)
-    latest = sorted(GENERATED.glob("*.png"), key=lambda p: p.stat().st_mtime, reverse=True)[: len(CONCEPTS)]
+    latest = sorted(source_dir.glob("*.png"), key=lambda p: p.stat().st_mtime, reverse=True)[: len(CONCEPTS)]
     ordered = list(reversed(latest))
     manifest = []
     for i, (src, concept) in enumerate(zip(ordered, CONCEPTS), 1):
@@ -40,7 +47,7 @@ def main() -> None:
                 "slug": slug,
                 "text_prompt": text,
                 "file": dest.name,
-                "source": str(src),
+                "source": src.name,
             }
         )
 
@@ -58,4 +65,3 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
-

@@ -25,12 +25,14 @@ python -m legends_captions.cli doctor
 Use the built-in Python CLI subcommands directly instead of improvising shell pipelines:
 
 ```sh
+legends-captions --version
 legends-captions doctor
 legends-captions policy-report
 legends-captions normalize --uppercase "low raw teaches the model"
 legends-captions normalize --manifest "L O R A."
 legends-captions render-ass --uppercase "low raw teaches the model"
-legends-captions render-ass --input transcript.words.json --output captions.ass --manifest-output correction_manifest.json --uppercase
+legends-captions render-ass --input transcript.words.json --output captions.ass --manifest-output correction_manifest.json --uppercase --overwrite
+legends-captions ffmpeg-filter --ass captions.ass
 ```
 
 Recommended prompt:
@@ -41,18 +43,8 @@ policy, build active-word ASS captions and correction manifests with
 legends-captions render-ass, and review any flagged terms before final render.
 ```
 
-Start with the `doctor` command, inspect active rules with `policy-report`, normalize or generate `.ass` subtitles and manifests with `normalize` and `render-ass`, and review any flagged ASR errors before final render.
+Start with the `doctor` command, inspect active rules with `policy-report`, normalize or generate `.ass` subtitles and manifests with `normalize` and `render-ass`, format escaped FFmpeg filtergraph strings with `ffmpeg-filter --ass <path>`, and review any flagged ASR errors before final render.
 
-## Full Runtime Notes
+## External ASR and Alignment Notes
 
-The current preferred text-quality runtime is WSL Parakeet:
-
-```text
-/home/you/.venvs/speech/bin/python
-```
-
-Set `LEGENDS_CAPTIONS_WSL_PYTHON` (see `.env.example`) to point at your own
-speech environment.
-
-The preferred final timing authority is NeMo Forced Aligner CTM output when exact
-word timing matters.
+`legends-captions` is a pure-stdlib offline policy and `.ass` rendering engine that requires zero environment variables or network credentials. When generating upstream word-timed JSON or CTM inputs before running `legends-captions render-ass`, the preferred ASR layer is NVIDIA NeMo Parakeet (`nvidia/parakeet-tdt-0.6b-v3`) and the preferred final word-boundary authority is NeMo Forced Aligner (NFA) CTM output.

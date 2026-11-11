@@ -1,5 +1,12 @@
 # Changelog
 
+## v0.1.4 - 2026-11-11
+
+- Add `legends-captions ffmpeg-filter --ass <path> [--json]` (`escape_ffmpeg_ass_filter`, `format_ffmpeg_ass_filtergraph`) to deterministically escape Windows drive colons, backslashes, quotes, and `libavfilter` metacharacters (`CWE-88`), and escape tokens with `escape_ass()` in `.raw/sources/avalon-build-vertical-active-word-captions.py`.
+- Harden `cli.py` with wheel-safe `resolve_project_root()` and `importlib.resources` packaged config lookup, symlink refusal (`CWE-59`), file size caps (`<= 1 MiB` for `--config`, `<= 25 MiB` for `--input`, `CWE-400`), non-finite JSON rejection (`NaN`/`Infinity`), and fail-closed `--overwrite` atomic writes on `render-ass` (Law 2).
+- Harden `ass_builder.py` (`AssStyle`, `AssEvent`, `ass_time`, `escape_ass`, `build_ass_document`) against style/font comma/newline injection (`CWE-74`), raw `\r` carriage-return splitting, and non-finite or out-of-range timestamps/canvas bounds (`CWE-20`).
+- Remove private workstation session paths from `scripts/stage_*.py`, align `README.md`, `docs/install/agent-install-guide.md`, `.env.example`, and `docs/AGENT-RECIPE.md` 1:1 with actual CLI capabilities, add `MANIFEST.in` for complete sdist parity, and upgrade `scripts/check_release.py`.
+
 ## v0.1.3 - 2026-11-05
 
 - Add `docs/AGENT-RECIPE.md` with full 1:1 CLI command parity (`doctor`, `policy-report`, `normalize`, `render-ass`) and explicit EDR and Security Guardrails.
