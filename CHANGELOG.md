@@ -1,5 +1,11 @@
 # Changelog
 
+## v0.1.5 - 2026-11-21
+
+- Add `scripts/render_cards.py` and the 7 outlined Legends Font `r1` SVG architecture, plain-english workflow, comparison, agent handoff, message desk, and collection star shrine cards under `assets/cards/r1/`.
+- Upgrade `README.md` to the evergreen CTO Legends architecture and reference drawer standard with collapsible `<details>` reference sections and zero hardcoded version drift.
+- Remove duplicate `assets/collection-star-shrine.svg` and include `assets/cards/r1/*.svg` and `scripts/render_cards.py` in `MANIFEST.in` and `scripts/check_release.py`.
+
 ## v0.1.4 - 2026-11-11
 
 - Add `legends-captions ffmpeg-filter --ass <path> [--json]` (`escape_ffmpeg_ass_filter`, `format_ffmpeg_ass_filtergraph`) to deterministically escape Windows drive colons, backslashes, quotes, and `libavfilter` metacharacters (`CWE-88`), and escape tokens with `escape_ass()` in `.raw/sources/avalon-build-vertical-active-word-captions.py`.

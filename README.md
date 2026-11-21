@@ -1,146 +1,146 @@
-<!-- ?raw=true busts GitHub's image CDN cache after the 0.2.0 rebrand -->
-# ![legends-captions](assets/banner.webp?raw=true)
+# ![legends-captions](assets/banner.webp)
 
-[![release](https://img.shields.io/github/v/release/avalonreset/legends-captions?label=release&style=flat-square&labelColor=000000&color=ff0000)](https://github.com/avalonreset/legends-captions/releases/latest)
+[![release](https://img.shields.io/github/v/release/avalonreset/legends-captions?label=release&sort=date&style=flat-square&labelColor=000000&color=ff0000)](https://github.com/avalonreset/legends-captions/releases/latest)
 [![checks](https://img.shields.io/github/actions/workflow/status/avalonreset/legends-captions/tests.yml?branch=main&label=checks&style=flat-square&labelColor=000000)](https://github.com/avalonreset/legends-captions/actions/workflows/tests.yml)
+[![contract](https://img.shields.io/github/actions/workflow/status/avalonreset/legends-captions/contract.yml?branch=main&label=contract&style=flat-square&labelColor=000000)](https://github.com/avalonreset/legends-captions/actions/workflows/contract.yml)
+[![python](https://img.shields.io/badge/python-3.11%2B-000000?style=flat-square&labelColor=000000&color=ff0000)](pyproject.toml)
+[![engine](https://img.shields.io/badge/engine-active--word%20ASS%20%2B%20FFmpeg%20filter-000000?style=flat-square&labelColor=000000&color=ff0000)](src/legends_captions/cli.py)
 [![license](https://img.shields.io/github/license/avalonreset/legends-captions?label=license&style=flat-square&labelColor=000000&color=666666)](LICENSE)
-![Python](https://img.shields.io/badge/python-3.11+-3776AB)
-![Agents](https://img.shields.io/badge/agents-Codex%20%7C%20Claude%20%7C%20Gemini-111827)
 
-Video captions are easy to generate and painful to trust. Legends Captions is an agentic video caption system that treats transcript correction,
-forced alignment, active-word timing, proof frames, and revision memory as one
-release workflow instead of a pile of manual cleanup.
+**Active-word video caption, Whisper/NFA word-timestamp alignment, ASS/SRT/VTT styling, and FFmpeg burn-in CLI engine (`legends-captions`) for coding agents: repair misheard domain terms (`LoRA`, `Seedance`), preserve letter-by-letter spoken acronym timing (`L O R A`), render safe-zone 9:16 / 16:9 / 1:1 SubStation Alpha scripts with JSON audit receipts, and format CWE-88 escaped FFmpeg `libavfilter` strings.**
 
-This is built for the gap between generic auto captions and real publishing
-quality. The system is intentionally overbuilt: it uses context-aware correction
-policy, Parakeet-quality ASR, NeMo Forced Aligner timing, ASS caption rendering,
-manifest evidence, and final-render QA so the first pass is usually close and
-the second pass teaches the next run.
-
-## What It Does
-
-- Builds accurate captions from the exact final video clock.
-- Applies contextual ASR correction before render.
-- Fixes model names, product names, acronyms, hardware names, and obvious phrase
-  errors when the evidence is strong.
-- Keeps spoken acronyms such as `L O R A` independently highlightable when the
-  speaker spells the term.
-- Uses forced alignment as final timing evidence when exact highlights matter.
-- Produces active-word ASS captions with consistent visual rules.
-- Preserves manifests so every text correction and timing fallback can be
-  reviewed later.
-- Turns user fixes into reusable policy, config, and regression tests.
-
-## What Makes This Different
-
-| Generic auto captions | Legends Captions |
-|---|---|
-| Trusts ASR text too much | Treats ASR as evidence, not the editor |
-| Often misses domain terms | Uses glossary and contextual correction |
-| Word timing can be rough | Uses forced alignment when timing matters |
-| Fixes disappear after the run | Revisions become policy and tests |
-| Proofing is manual and informal | Requires manifests and proof-frame QA |
-
-The goal is not to make another one-click caption toy. The goal is a caption
-deployment system that can take a real creator video, apply captions, catch the
-obvious nonsense, and leave behind enough evidence for an agent to improve.
-
-## Quick Start
-
-```powershell
-git clone https://github.com/avalonreset/legends-captions.git
-Set-Location -LiteralPath .\legends-captions
-python -m venv .venv
-.\.venv\Scripts\python.exe -m pip install -e .
-.\.venv\Scripts\legends-captions.exe doctor
-```
-
-Try the policy engine:
-
-```powershell
-.\.venv\Scripts\legends-captions.exe normalize --uppercase "low raw teaches the model"
-.\.venv\Scripts\legends-captions.exe normalize --uppercase "it may not be as exacting 2.0,"
-.\.venv\Scripts\legends-captions.exe normalize --manifest "L O R A."
-.\.venv\Scripts\legends-captions.exe render-ass --uppercase "low raw teaches the model"
-.\.venv\Scripts\legends-captions.exe ffmpeg-filter --ass "C:\work\captions.ass"
-```
-
-Run tests on any platform with Python 3.11+:
-
-```sh
-python -m unittest discover -s tests
-```
-
-## Caption Policy Examples
-
-| Heard by ASR | Display policy |
-|---|---|
-| `low raw` | `LoRA` |
-| `C dance 2.0` | `Seedance 2.0` |
-| `exacting 2.0` in AI-video context | `exciting as Seedance 2.0` |
-| `what is this unlock` | `what does this unlock` |
-| `sticking the 30` | `sticking to 30` |
-| `L O R A` | preserve per-letter highlight timing |
-
-## Agent setup (via `cto-legends`)
-
-Part of the [CTO Legends](https://github.com/avalonreset/cto-legends) ecosystem. `cto-legends` is the only registered skill; this repo vendors a pinned copy at `skills/cto-legends/SKILL.md`.
-
-Install with `cto-legends install legends-captions`, then follow the module recipe the router loads. Do not register this module as its own skill.
-
-## Project Map
+![Agent Handoff](assets/cards/r1/slot-1-agent-handoff.svg)
 
 ```text
-.raw/       preserved source notes, scripts, manifests, and run evidence
-assets/     README banner and social preview
-configs/    reusable caption style and correction defaults
-docs/       install, architecture, compatibility, release, and QA docs
-release/    Skool post drafts and promo copy (art staging stays local)
-skills/     vendored `cto-legends` router skill copy (only registered skill)
-src/        Python package for policy, correction, ASS helpers, and manifests
-tests/      regression tests created from real caption fixes
-wiki/       product brain for policies, playbooks, agents, and QA
+Install or update legends-captions via cto-legends (https://github.com/avalonreset/cto-legends): run `cto-legends install legends-captions --apply`, then `cto-legends handoff legends-captions` and follow the returned JSON recipe to verify `legends-captions`.
 ```
 
-## Where Transcripts Come From
+![Three Pillars: Word timing & policy repair, Safe-zone 9:16 / 16:9 / 1:1 ASS, Preview-first FFmpeg burn-in](assets/cards/r1/slot-2-three-pillars.svg)
 
-This module corrects, times, and renders captions. It does not record audio
-or run ASR itself. Get transcripts from the Legends module that fits:
+## Why `legends-captions` exists
 
-- [`legends-ambient-intelligence`](https://github.com/avalonreset/legends-ambient-intelligence) for recorded audio: voice memos, recorder
-  ingest, and offline Whisper or Parakeet transcription.
-- [`legends-hyperyap`](https://github.com/avalonreset/legends-hyperyap) for live dictated text.
-- [`legends-yt-dlp`](https://github.com/avalonreset/legends-yt-dlp) subtitle fetch for pulled video.
+Raw speech-to-text subtitles and ad-hoc chat cleanup routinely break production video workflows:
 
-Then bring the text here for correction policy, forced-alignment timing,
-active-word rendering, and proof evidence.
+1. **Mangled domain terms and stiff chat rewrites:** Raw ASR transcribes `LoRA` as `low raw` or `Seedance 2.0` as `C dance 2.0`, while pasting a subtitle file into a free-form chat window often rewrites your natural speaking voice, drops lines, and forgets your custom glossary on the very next video.
+2. **Broken word timestamps and frozen spelled-out acronyms:** When a two-word misheard phrase is repaired into a four-word technical term, naive text replacements corrupt subtitle timecodes. Worse, generic cleanup collapses spoken letters like `L O R A` into a single token, freezing active-word highlight animations across four spoken syllables.
+3. **Unescaped FFmpeg `libavfilter` paths on Windows and macOS:** Passing a raw Windows path (`C:\work\captions.ass`) or a filename containing quotes, brackets, or semicolons into `ffmpeg -filter_complex "ass=filename=..."` fails on drive colons or opens argument-injection risks (`CWE-88`).
 
-## Documentation
+`legends-captions` is a deterministic, zero-dependency Python CLI engine that treats contextual ASR phrase repair, proportional word-span redistribution, spoken acronym letter locking, SubStation Alpha (`.ass`) rendering, and FFmpeg `libavfilter` escaping as one auditable release pipeline.
 
-- [Agent recipe](docs/AGENT-RECIPE.md)
-- [Architecture](docs/architecture.md)
-- [Agent compatibility](docs/agent-compatibility.md)
-- [Install guide](docs/install/agent-install-guide.md)
-- [Release checklist](docs/release-checklist.md)
-- [Caption QA policy](wiki/policies/Caption%20Intelligence%20Policy.md)
-- [Revision learning policy](wiki/policies/Revision%20Learning%20Policy.md)
+## Ask in plain english
 
-## Acknowledgments
+Once [`cto-legends`](https://github.com/avalonreset/cto-legends) is installed, you ask your coding agent in plain english. It inspects the active glossary, normalizes ASR drift, redistributes word timestamps, writes `.ass` scripts and JSON audit manifests, and formats safe FFmpeg burn-in filtergraphs:
 
-The caption policy engine, CLI, manifests, docs, and release art
-direction are original work by Avalon Reset, released under MIT. The
-package has zero runtime dependencies.
+![Say the job in plain words](assets/cards/r1/slot-3-plain-english-chains.svg)
 
-Release art sources are AI-generated images composited locally with
-`scripts/stage_banner_concepts.py`; no stock photography or third-party
-artwork is shipped.
+## Architecture: contextual policy engine and deterministic ASS builder
 
-This module works alongside tools it does not ship: FFmpeg (LGPL/GPL),
-faster-whisper (MIT), NVIDIA NeMo with Parakeet weights (Apache-2.0
-code, CC-BY-4.0 weights), yt-dlp (Unlicense), and Montserrat (SIL Open
-Font License, referenced by name in the default ASS style only).
+![How contextual ASR policy and deterministic ASS rendering work](assets/cards/r1/slot-4-captions-architecture.svg)
 
-## FAQ
+### 1. Contextual ASR policy, proportional word timing, and spoken acronym lock (`policy.py`)
+
+Before a single subtitle event is rendered, `apply_caption_policy` runs a deterministic two-pass pipeline over inline text or word-timed JSON (`tokens`, `words`, `events`, or `segments` from faster-whisper or NVIDIA NeMo Parakeet / NeMo Forced Aligner):
+
+- **Longest-match domain glossary and grammar repair:** Repairs high-evidence ASR errors (`low raw` to `LoRA`, `C dance 2.0` / `exacting 2.0` to `Seedance 2.0`, `what is this unlock` to `what does this unlock`, `sticking the 30` to `sticking to 30`) while preserving trailing punctuation and surrounding prose.
+- **Proportional millisecond timing redistribution (`distribute_timing`):** Whenever a phrase rule changes token count, the original audio time span (`first.start` to `last.end`) is subdivided evenly across the replacement tokens so active-word highlights never jump, overlap, or freeze.
+- **Letter-by-letter spoken acronym lock (`mark_spoken_acronyms`):** Detects runs of single spoken letters matching known technical acronyms (`api`, `css`, `gpu`, `html`, `lora`, `nfa`, `seo`, `ui`, `ux`, `vram`) and tags each letter with `spoken_acronym_letter` so word-by-word captions highlight every syllable on beat.
+
+| Heard by ASR | Display policy | Rule category |
+| :--- | :--- | :--- |
+| `low raw` / `low ra` / `low-ra` | `LoRA` | `domain_term` |
+| `C dance 2.0` / `sea dance 2.0` | `Seedance 2.0` | `contextual_model_name` |
+| `exacting 2.0` in AI-video context | `exciting as Seedance 2.0` | `contextual_model_name` |
+| `what is this unlock` | `what does this unlock` | `grammar_repair` |
+| `sticking the 30` | `sticking to 30` | `idiom_repair` |
+| `L O R A` | `L O R A` (per-letter highlight lock) | `spoken_acronym_timing` |
+
+### 2. Safe-zone ASS renderer, JSON audit manifests, and CWE-88 FFmpeg guard (`ass_builder.py` & `cli.py`)
+
+Every subcommand in `legends-captions` is hardened against injection, non-finite timestamps, and accidental file overwrites:
+
+| Command | Surface | What It Does |
+| :--- | :--- | :--- |
+| `legends-captions doctor` | **Readiness & Profile Check** | Verifies Python 3.11+, active style profile (`configs/default_vertical_4k60.json`), checkout state, and optional `ffmpeg` / `ffprobe` binaries on `PATH`. |
+| `legends-captions policy-report` | **Correction Rule Catalog** | Prints the full JSON catalog of active phrase rules, replacement strings, categories, confidence scores, and rationales. |
+| `legends-captions normalize` | **Text Repair & QA Manifest** | Normalizes inline text (`--uppercase`) or emits a structured `legends_captions.policy_manifest.v1` JSON audit receipt (`--manifest`) recording every decision and token span. |
+| `legends-captions render-ass` | **9:16 / 16:9 / 1:1 ASS Builder** | Emits active-word (`--mode word`) or full-line (`--mode line`) `.ass` subtitle documents for any PlayRes canvas (`--width 2160 --height 3840` default) with atomic fail-closed writes (`--overwrite` required to replace existing files) and optional `--manifest-output`. |
+| `legends-captions ffmpeg-filter` | **CWE-88 FFmpeg Filter Guard** | Escapes Windows drive colons, backslashes, quotes, brackets, commas, and semicolons into a deterministic `[0:v]setpts=PTS-STARTPTS,ass=filename='...'[v]` filtergraph string (`--json` supported). |
+
+## Ad-hoc SRT burns vs `legends-captions`
+
+![Comparison: Ad-hoc SRT burns & subscription apps vs Active-word caption engine // legends-captions](assets/cards/r1/slot-5-adhoc-vs-captions.svg)
+
+## Quick start
+
+```sh
+# 1. Verify runtime health, active 4K60 profile, and FFmpeg availability
+legends-captions doctor
+legends-captions policy-report
+
+# 2. Preview contextual ASR phrase normalization and spoken acronym locking
+legends-captions normalize --uppercase "low raw teaches the model"
+legends-captions normalize --uppercase "it may not be as exacting 2.0,"
+legends-captions normalize --manifest "L O R A."
+
+# 3. Render active-word 4K60 vertical (2160x3840) or 16:9 (3840x2160) ASS subtitles
+legends-captions render-ass --uppercase "low raw teaches the model"
+legends-captions render-ass --input words.json --output captions.ass --manifest-output correction_manifest.json --uppercase --overwrite
+
+# 4. Format an injection-safe FFmpeg libavfilter string for burn-in
+legends-captions ffmpeg-filter --ass captions.ass --json
+```
+
+## Reference
+
+<details>
+<summary><strong>Upstream transcript and video handoffs (<code>legends-yt-dlp</code>, <code>legends-obs</code>, <code>legends-youtube</code>)</strong></summary>
+
+`legends-captions` corrects, times, and renders captions without bundling heavy ASR model weights or recording audio itself. Pair it with sibling modules in the `cto-legends` ecosystem:
+
+- [`legends-yt-dlp`](https://github.com/avalonreset/legends-yt-dlp) to pull source videos, extract audio, and generate local GPU word-timestamp JSON ledgers.
+- [`legends-ambient-intelligence`](https://github.com/avalonreset/legends-ambient-intelligence) for recorded voice memos and offline Whisper or Parakeet transcription.
+- [`legends-hyperyap`](https://github.com/avalonreset/legends-hyperyap) for live local voice dictation.
+- [`legends-obs`](https://github.com/avalonreset/legends-obs) to capture verified local 4K60 tutorial and creator recordings.
+- [`legends-youtube`](https://github.com/avalonreset/legends-youtube) to upload final captioned videos or attach subtitle tracks to draft uploads.
+
+Read [docs/AGENT-RECIPE.md](docs/AGENT-RECIPE.md), [docs/architecture.md](docs/architecture.md), [Caption Intelligence Policy](wiki/policies/Caption%20Intelligence%20Policy.md), and [Revision Learning Policy](wiki/policies/Revision%20Learning%20Policy.md) for full QA and revision rules.
+
+</details>
+
+<details>
+<summary><strong>Agent setup (via <code>cto-legends</code>) and standalone installation</strong></summary>
+
+### Agent setup (via `cto-legends`)
+
+Part of [cto-legends](https://github.com/avalonreset/cto-legends). The central router skill is vendored at [skills/cto-legends/SKILL.md](skills/cto-legends/SKILL.md); this module is not a separate registered skill and does not require an ambient MCP daemon.
+
+Run `cto-legends handoff legends-captions` and read the returned installed recipe and task-readiness checks. If the module is missing, preview setup with `cto-legends install legends-captions`, perform the authorized setup, then repeat the handoff. Use `cto-legends check-updates` to compare your installed version with the catalog and published release. See [docs/AGENT-RECIPE.md](docs/AGENT-RECIPE.md) and [docs/install/agent-install-guide.md](docs/install/agent-install-guide.md) for the standalone recipe.
+
+```sh
+python -m venv .venv
+python -m pip install -e .
+legends-captions doctor
+```
+
+</details>
+
+<details>
+<summary><strong>Repository layout, verification, and FAQ</strong></summary>
+
+```text
+configs/    reusable caption style (default_vertical_4k60.json) and correction glossary
+docs/       agent recipe, install guide, architecture, compatibility, and release checklist
+skills/     pinned copy of the central cto-legends router skill (only registered skill)
+src/        zero-dependency Python package (policy, ass_builder, manifest, cli)
+tests/      regression tests covering CLI smoke, symlink/CWE-88 guards, and phrase policy
+wiki/       policies, playbooks, and QA checklists for active-word caption deployment
+```
+
+```sh
+python -m pytest -v
+python -m unittest discover -s tests
+python scripts/check_release.py
+```
 
 **Does `legends-captions` bundle FFmpeg or ASR model weights?**
 No. It is a deterministic, zero-dependency caption policy, normalization, and `.ass` subtitle / manifest engine (`doctor`, `policy-report`, `normalize`, `render-ass`, `ffmpeg-filter`) that works alongside external tools (`ffmpeg`, `faster-whisper`, or NVIDIA NeMo Parakeet/NFA) on your machine without bundling model weights or spawning hidden shell wrappers.
@@ -148,18 +148,17 @@ No. It is a deterministic, zero-dependency caption policy, normalization, and `.
 **Can I generate subtitles without burning them into a new video file?**
 Yes. `legends-captions render-ass` emits standalone styled `.ass` subtitle documents and JSON policy-correction manifests (`--manifest-output`), and `legends-captions ffmpeg-filter --ass <path>` formats a safely escaped `libavfilter` `ass=filename='...'` filtergraph string for when you choose to run an FFmpeg burn-in pass.
 
-## Status
+</details>
 
-Current release: `v0.1.4`.
+## Contributing, security, and license
 
-License: MIT. See
-[LICENSE](LICENSE).
+See [CONTRIBUTING.md](CONTRIBUTING.md), [SUPPORT.md](SUPPORT.md), and [SECURITY.md](SECURITY.md).
 
-Repository target: `avalonreset/legends-captions`.
+MIT License. See [LICENSE](LICENSE) and [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). Copyright (c) 2026 Avalon Reset.
 
----
+[![Message Avalon Reset](assets/cards/r1/slot-7-message-avalon-reset.svg)](https://github.com/avalonreset/cto-legends/issues/new?title=Message%20for%20Avalon%20Reset&labels=message)
 
-<p align="center"><a href="https://github.com/stars/avalonreset/lists/cto-legends"><img src="assets/collection-star-shrine.svg" width="100%" alt="GitHub Star List: The complete cto-legends collection on one page. Bookmark or star the router and every module from a single GitHub list."></a></p>
+<p align="center"><a href="https://github.com/stars/avalonreset/lists/cto-legends"><img src="assets/cards/r1/slot-collection-star-shrine.svg" width="100%" alt="GitHub Star List: The complete cto-legends collection on one page. Bookmark or star the router and every module from a single GitHub list."></a></p>
 
 **Specification & benchmarks on cto-legends.com:**
 - **Module specification & architecture matrix:** [cto-legends.com/modules/legends-captions](https://cto-legends.com/modules/legends-captions)

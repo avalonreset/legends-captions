@@ -35,8 +35,15 @@ REQUIRED = [
     "assets/preview.png",
     "assets/social-preview.png",
     "assets/manifest.json",
+    "assets/cards/r1/slot-1-agent-handoff.svg",
+    "assets/cards/r1/slot-2-three-pillars.svg",
+    "assets/cards/r1/slot-3-plain-english-chains.svg",
+    "assets/cards/r1/slot-4-captions-architecture.svg",
+    "assets/cards/r1/slot-5-adhoc-vs-captions.svg",
+    "assets/cards/r1/slot-7-message-avalon-reset.svg",
+    "assets/cards/r1/slot-collection-star-shrine.svg",
 ]
-TEXT_SUFFIXES = {".md", ".py", ".json", ".toml", ".yml", ".yaml", ".in", ".txt", ".cfg", ".ini", ".cff"}
+TEXT_SUFFIXES = {".md", ".py", ".json", ".toml", ".yml", ".yaml", ".in", ".txt", ".cfg", ".ini", ".cff", ".svg"}
 FORBIDDEN = [
     r"(?i)[a-z]:\\{1,2}users\\{1,2}(?!\\|public\b|default\b|someone\b|you\b|<)",
     r"(?i)\.tail[a-z0-9]+\.ts\.net",
