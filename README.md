@@ -97,7 +97,7 @@ legends-captions ffmpeg-filter --ass captions.ass --json
 
 `legends-captions` corrects, times, and renders captions without bundling heavy ASR model weights or recording audio itself. Pair it with sibling modules in the `cto-legends` ecosystem:
 
-- [`legends-yt-dlp`](https://github.com/avalonreset/legends-yt-dlp) to pull source videos, extract audio, and generate local GPU word-timestamp JSON ledgers.
+- [`legends-yt-dlp` (bundled in `legends-youtube`)](https://github.com/avalonreset/legends-youtube) to pull source videos, extract audio, and generate local GPU word-timestamp JSON ledgers.
 - [`legends-ambient-intelligence`](https://github.com/avalonreset/legends-ambient-intelligence) for recorded voice memos and offline Whisper or Parakeet transcription.
 - [`legends-hyperyap`](https://github.com/avalonreset/legends-hyperyap) for live local voice dictation.
 - [`legends-obs`](https://github.com/avalonreset/legends-obs) to capture verified local 4K60 tutorial and creator recordings.
