@@ -23,6 +23,12 @@ keywords = [
 ]
 dependencies = []
 
+[project.urls]
+Homepage = "https://cto-legends.com/modules/legends-captions"
+Documentation = "https://cto-legends.com/modules/legends-captions"
+Repository = "https://github.com/avalonreset/legends-captions"
+Issues = "https://github.com/avalonreset/legends-captions/issues"
+
 [project.scripts]
 legends-captions = "legends_captions.cli:main"
 
